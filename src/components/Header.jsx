@@ -1,23 +1,49 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
+  const [select, setSelect] = useState(1);
   return (
     <header>
       <nav>
         <img className="navLogo" src="/img/logoDesktop.svg" alt="logo" />
         <ul className="navLinks">
           <li>
-            <Link to="/">All</Link>
+            <Link
+              onClick={() => setSelect(1)}
+              className={select === 1 && 'selected'}
+              to="/"
+            >
+              All
+            </Link>
           </li>
           <li>
-            <Link to="/specs">Specs</Link>
+            <Link
+              onClick={() => setSelect(2)}
+              className={select === 2 && 'selected'}
+              to="/specs"
+            >
+              Specs
+            </Link>
           </li>
           <li>
-            <Link to="/about-us">About us</Link>
+            <Link
+              onClick={() => setSelect(3)}
+              className={select === 3 && 'selected'}
+              to="/about-us"
+            >
+              About us
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link
+              onClick={() => setSelect(4)}
+              className={select === 4 && 'selected'}
+              to="/contact"
+            >
+              Contact
+            </Link>
           </li>
         </ul>
         <button className="rocketButton" type="button">
