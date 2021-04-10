@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header>
       <nav>
-        <img src="/img/logoDesktop.svg" alt="logo" />
+        <img className="navLogo" src="/img/logoDesktop.svg" alt="logo" />
         <ul className="navLinks">
           <li>
             <Link to="/">All</Link>
@@ -20,7 +20,7 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
-        <button type="button" className="rocketButton">
+        <button className="rocketButton" type="button">
           <img src="/img/rocketButtonText.png" alt="rocket mode" />
         </button>
       </nav>

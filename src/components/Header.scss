@@ -5,22 +5,42 @@ nav {
   width: 100vw;
   height: 85px;
   padding: 0 1rem;
-}
 
-.rocketButton {
-  background-color: #d50a2c;
-  height: 50px;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem;
-  cursor: pointer;
+  .navLinks {
+    display: flex;
+    list-style-type: none;
 
-  &:hover {
-    transform: scale(1.05);
+    li {
+      padding: 0 1.2rem;
+
+      a {
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 20px;
+        color: #000;
+
+        &:hover {
+          color: #d50a2c;
+        }
+      }
+    }
   }
 
-  img {
-    position: relative;
-    top: 2px;
+  .rocketButton {
+    background-color: #d50a2c;
+    height: 50px;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+    cursor: pointer;
+  
+    &:hover {
+      transform: scale(1.02);
+    }
+  
+    img {
+      position: relative;
+      top: 2px;
+    }
   }
 }
