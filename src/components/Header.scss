@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 85px;
+  padding: 0 1rem;
+}
+
+.rocketButton {
+  background-color: #d50a2c;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    position: relative;
+    top: 2px;
+  }
+}

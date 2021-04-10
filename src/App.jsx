@@ -4,6 +4,7 @@ import All from './components/All';
 import Specs from './components/Specs';
 import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
+import './App.scss';
 
 function App() {
   return (
