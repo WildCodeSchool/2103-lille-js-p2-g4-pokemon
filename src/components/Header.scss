@@ -1,3 +1,9 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -51,6 +57,17 @@ nav {
     img {
       position: relative;
       top: 2px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  nav {
+    height: 65px;
+
+    .navLogo {
+      width: 82px;
+      height: 28px;
     }
   }
 }

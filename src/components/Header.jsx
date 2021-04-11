@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
   const [select, setSelect] = useState(1);
+  const [widthScreen, setWidthScreen] = useState(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener('resize', () => setWidthScreen(window.innerWidth));
+  }, [widthScreen]);
   return (
     <header>
       <nav>
-        <img className="navLogo" src="/img/logoDesktop.svg" alt="logo" />
+        <img
+          className="navLogo"
+          src={`/img/${widthScreen > 800 ? 'logoDesktop' : 'logoPhone'}.svg`}
+          alt="logo"
+        />
         <ul className="navLinks">
           <li>
             <Link
