@@ -7,7 +7,7 @@ const Header = () => {
   const [widthScreen, setWidthScreen] = useState(window.innerWidth);
   useEffect(() => {
     window.addEventListener('resize', () => setWidthScreen(window.innerWidth));
-  }, [widthScreen]);
+  });
 
   const [menuDisplay, setMenuDisplay] = useState(window.innerWidth > 800);
   useEffect(() => {
@@ -17,13 +17,21 @@ const Header = () => {
   }, [menuDisplay]);
 
   const handleMenu = (click) => {
-    if (click === 'checkbox') {
+    if (click === 'checkbox' || click === 'resize') {
       setMenuDisplay(!menuDisplay);
     } else if (click === 'link' && widthScreen <= 800) {
       setMenuDisplay(false);
     }
     return null;
   };
+
+  useEffect(() => {
+    if (widthScreen > 800 && menuDisplay === false) {
+      handleMenu('resize');
+    } else if (widthScreen <= 800 && menuDisplay === true) {
+      handleMenu('resize');
+    }
+  }, [widthScreen]);
 
   return (
     <header>
