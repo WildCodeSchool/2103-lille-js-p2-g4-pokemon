@@ -1,10 +1,14 @@
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100vw;
   height: 85px;
   padding: 0 1rem;
+
+  .navLogo {
+    margin-right: auto;
+  }
 
   .navLinks {
     display: flex;
@@ -13,7 +17,7 @@ nav {
     li {
       padding: 0 1.2rem;
 
-      a {
+      .navLink {
         text-decoration: none;
         font-weight: 700;
         font-size: 20px;
@@ -24,7 +28,7 @@ nav {
         }
       }
 
-      .selected {
+      .navLink.selected {
         color: #d50a2c;
         border-bottom: 2px solid #d50a2c;
       }
@@ -32,6 +36,7 @@ nav {
   }
 
   .rocketButton {
+    margin-left: auto;
     background-color: #d50a2c;
     height: 50px;
     border: none;

@@ -12,7 +12,7 @@ const Header = () => {
           <li>
             <Link
               onClick={() => setSelect(1)}
-              className={select === 1 && 'selected'}
+              className={`navLink ${select === 1 && 'selected'}`}
               to="/"
             >
               All
@@ -21,7 +21,7 @@ const Header = () => {
           <li>
             <Link
               onClick={() => setSelect(2)}
-              className={select === 2 && 'selected'}
+              className={`navLink ${select === 2 && 'selected'}`}
               to="/specs"
             >
               Specs
@@ -30,7 +30,7 @@ const Header = () => {
           <li>
             <Link
               onClick={() => setSelect(3)}
-              className={select === 3 && 'selected'}
+              className={`navLink ${select === 3 && 'selected'}`}
               to="/about-us"
             >
               About us
@@ -39,7 +39,7 @@ const Header = () => {
           <li>
             <Link
               onClick={() => setSelect(4)}
-              className={select === 4 && 'selected'}
+              className={`navLink ${select === 4 && 'selected'}`}
               to="/contact"
             >
               Contact
