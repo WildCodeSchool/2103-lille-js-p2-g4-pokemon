@@ -7,7 +7,7 @@ const Header = () => {
   const [widthScreen, setWidthScreen] = useState(window.innerWidth);
   useEffect(() => {
     window.addEventListener('resize', () => setWidthScreen(window.innerWidth));
-  });
+  }, []);
 
   const [menuDisplay, setMenuDisplay] = useState(window.innerWidth > 800);
   useEffect(() => {
