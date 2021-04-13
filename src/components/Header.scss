@@ -12,6 +12,7 @@ nav {
   width: 100vw;
   height: 85px;
   padding: 0 1rem;
+  background-color: #fff;
 
   .burger {
     display: none;
@@ -56,6 +57,7 @@ nav {
   .menuContainer {
     display: flex;
     align-items: center;
+    z-index: 2;
 
     .navLinks {
       display: flex;

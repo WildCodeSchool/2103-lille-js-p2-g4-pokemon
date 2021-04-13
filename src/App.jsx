@@ -10,7 +10,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
         <main>
           <Switch>
             <Route exact path="/" component={All} />
@@ -19,6 +18,7 @@ function App() {
             <Route path="/contact" component={Contact} />
           </Switch>
         </main>
+        <Header />
       </div>
     </Router>
   );
