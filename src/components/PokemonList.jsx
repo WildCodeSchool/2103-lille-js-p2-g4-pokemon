@@ -7,7 +7,7 @@ const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   useEffect(() => {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=800&offset=0')
+      .get('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0')
       .then((data) => {
         setPokemons(data.data.results);
       });
@@ -15,7 +15,7 @@ const PokemonList = () => {
   return (
     <div className="pokemon-list">
       {pokemons.map((pokemon) => {
-        return <Pokemon name={pokemon.name} />;
+        return <Pokemon {...pokemon} />;
       })}
     </div>
   );
