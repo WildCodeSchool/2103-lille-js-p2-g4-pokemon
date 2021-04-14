@@ -1,0 +1,7 @@
+.pokemon-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, 230px);
+  padding: 20px;
+  justify-content: center;
+}
