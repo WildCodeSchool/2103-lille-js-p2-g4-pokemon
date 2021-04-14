@@ -4,10 +4,12 @@ import Pokemon from './Pokemon';
 import './css/PokemonList.scss';
 
 const PokemonList = () => {
-  // Declaration of a variable with useState to store the return value of the call to the API (useSate initialized with an empty array)
+  /* Declaration of a variable with useState to store the return value of the
+    call to the API (useSate initialized with an empty array) */
   const [pokemons, setPokemons] = useState([]);
 
-  // Call the API to get the list of pokémons that we want to display on the Homepage (here the 50 first Pokemon)
+  /* Call the API to get the list of pokémons that we want to display on the
+    Homepage (here the 50 first Pokemon) */
   useEffect(() => {
     axios
       .get('https://pokeapi.co/api/v2/pokemon?limit=50&offset=0')
@@ -18,7 +20,9 @@ const PokemonList = () => {
 
   return (
     <div className="pokemon-list">
-      {/* For each pokemon returned by the API and stored in the useState: "pokemons", call of the <Pokemon /> component with the API url of this one as props to display the Pokemon */}
+      {/* For each pokemon returned by the API and stored in the useState:
+        "pokemons", call of the <Pokemon /> component with the API url of this
+        one as props to display the Pokemon */}
       {pokemons.map((pokemon) => {
         return <Pokemon url={pokemon.url} />;
       })}

@@ -4,7 +4,7 @@ import PokemonList from './PokemonList';
 const Homepage = () => {
   return (
     <div className="Homepage">
-      {/* Calling the <Pokemon /> component */}
+      {/* Calling the <PokemonList /> component */}
       <PokemonList />
     </div>
   );
