@@ -1,26 +1,54 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './css/Pokemon.scss';
 import propTypes from 'prop-types';
+import './css/Pokemon.scss';
 
-const Pokemon = ({ name, url }) => {
-  const [stats, setStats] = useState({});
+const Pokemon = ({ url }) => {
+  /* Declaration of a variable with useState to store the return value of the
+    call to the API (useSate initialized with an object that contains a default
+    value for each variable used in the component) */
+  const [infos, setinfos] = useState({
+    sprites: {
+      other: {
+        'official-artwork': {
+          front_default: '',
+        },
+      },
+    },
+    id: 0,
+    name: 'undefined',
+    types: [
+      {
+        type: {
+          name: 'undefined',
+        },
+      },
+    ],
+  });
+
+  /* Call the API with the url received in props to get the information of the
+    Pokemon we want to display */
   useEffect(() => {
-    axios.get(url).then((data) => {
-      setStats(data.data);
+    axios.get(url).then(({ data }) => {
+      setinfos(data);
     });
   }, []);
+
   return (
     <article className="pokemon">
       <img
         className="pokemon-image"
-        src="/img/bulbasaur.png"
+        // Pokemon Image Display
+        src={infos.sprites.other['official-artwork'].front_default}
         alt="pokemon avatar"
       />
-      <h2 className="pokemon-name">{name}</h2>
+      {/* Pokemon Name Display */}
+      <h2 className="pokemon-name">{infos.name}</h2>
       <div className="pokemon-id-type">
-        <p className="pokemon-id">#{stats.id} - </p>
-        <p className="pokemon-type">type</p>
+        {/* Pokemon ID Display */}
+        <p className="pokemon-id">#{infos.id} - </p>
+        {/* Pokemon first type Display */}
+        <p className="pokemon-type">{infos.types[0].type.name}</p>
       </div>
       <div className="arrow-container">
         <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
@@ -30,13 +58,11 @@ const Pokemon = ({ name, url }) => {
 };
 
 Pokemon.propTypes = {
-  name: propTypes.string,
   url: propTypes.string,
 };
 
 Pokemon.defaultProps = {
-  name: 'pikachu',
-  url: ' ',
+  url: 'undefined',
 };
 
 export default Pokemon;
