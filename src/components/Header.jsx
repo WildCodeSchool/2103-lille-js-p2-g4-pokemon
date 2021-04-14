@@ -3,7 +3,7 @@ import './css/Header.scss';
 const Header = () => {
   return (
     <header className="Header">
-      <p>Header</p>
+      <img src="/img/logoDesktop.svg" alt="logo" className="logoDesktop" />
     </header>
   );
 };
