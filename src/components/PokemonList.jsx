@@ -12,9 +12,9 @@ const PokemonList = () => {
     Homepage (here the 50 first Pokemon) */
   useEffect(() => {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=5&offset=0')
-      .then((data) => {
-        setPokemons(data.data.results);
+      .get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
+      .then(({ data }) => {
+        setPokemons(data.results);
       });
   }, []);
 
@@ -24,7 +24,7 @@ const PokemonList = () => {
         "pokemons", call of the <Pokemon /> component with the API url of this
         one as props to display the Pokemon */}
       {pokemons.map((pokemon) => {
-        return <Pokemon url={pokemon.url} />;
+        return <Pokemon key={pokemon.name} url={pokemon.url} />;
       })}
     </ul>
   );

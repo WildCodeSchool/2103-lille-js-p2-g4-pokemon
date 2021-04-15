@@ -9,6 +9,11 @@
   padding: 1rem 0;
   list-style-type: none;
 
+  .pokemon-image {
+    width: 200px;
+    height: 200px;
+  }
+
   .pokemon-infos {
     display: flex;
     flex-direction: column;
@@ -48,8 +53,4 @@
       transform: translate(-50%, -50%);
     }
   }
-}
-
-.pokemon-image {
-  width: 200px;
 }

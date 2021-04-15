@@ -12,7 +12,8 @@ const Pokemon = ({ url }) => {
     sprites: {
       other: {
         'official-artwork': {
-          front_default: '',
+          front_default:
+            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png',
         },
       },
     },
@@ -56,7 +57,9 @@ const Pokemon = ({ url }) => {
             useGrouping: false,
           })}
         </p>
-        <p className="pokemon-type">{infos.types[0].type.name}</p>
+        <p className="pokemon-types">
+          {infos.types.map((element) => element.type.name).join(' - ')}
+        </p>
       </div>
       {/* Pokemon Name Display */}
       <div className="arrow-container">
