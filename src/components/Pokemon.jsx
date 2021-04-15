@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
+import colorTypes from '../colorTypes.json';
 import './css/Pokemon.scss';
 
 const Pokemon = ({ url }) => {
@@ -35,7 +36,10 @@ const Pokemon = ({ url }) => {
   }, []);
 
   return (
-    <article className="pokemon">
+    <article
+      className="pokemon"
+      style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
+    >
       <img
         className="pokemon-image"
         // Pokemon Image Display
@@ -43,7 +47,9 @@ const Pokemon = ({ url }) => {
         alt="pokemon avatar"
       />
       {/* Pokemon Name Display */}
-      <h2 className="pokemon-name">{infos.name}</h2>
+      <h2 className="pokemon-name">
+        {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
+      </h2>
       <div className="pokemon-id-type">
         {/* Pokemon ID Display */}
         <p className="pokemon-id">#{infos.id} - </p>
