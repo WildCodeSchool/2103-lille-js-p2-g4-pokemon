@@ -36,30 +36,33 @@ const Pokemon = ({ url }) => {
   }, []);
 
   return (
-    <article
+    <li
       className="pokemon"
       style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
     >
       <img
         className="pokemon-image"
-        // Pokemon Image Display
         src={infos.sprites.other['official-artwork'].front_default}
         alt="pokemon avatar"
       />
-      {/* Pokemon Name Display */}
-      <h2 className="pokemon-name">
-        {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-      </h2>
-      <div className="pokemon-id-type">
-        {/* Pokemon ID Display */}
-        <p className="pokemon-id">#{infos.id} - </p>
-        {/* Pokemon first type Display */}
+      <div className="pokemon-infos">
+        <h2 className="pokemon-name">
+          {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
+        </h2>
+        <p className="pokemon-id">
+          #
+          {infos.id.toLocaleString('en-US', {
+            minimumIntegerDigits: 3,
+            useGrouping: false,
+          })}
+        </p>
         <p className="pokemon-type">{infos.types[0].type.name}</p>
       </div>
+      {/* Pokemon Name Display */}
       <div className="arrow-container">
         <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
       </div>
-    </article>
+    </li>
   );
 };
 
