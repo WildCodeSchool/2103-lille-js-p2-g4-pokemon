@@ -61,7 +61,6 @@ const Pokemon = ({ url }) => {
           {infos.types.map((element) => element.type.name).join(' - ')}
         </p>
       </div>
-      {/* Pokemon Name Display */}
       <div className="arrow-container">
         <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
       </div>
