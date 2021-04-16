@@ -1,12 +1,18 @@
 .Header {
-  height: 70px;
+  height: 100px;
   width: 100vw;
   background-color: #CC0000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   img {
-    width: 77px;
+    width: 70px;
     margin: 10px;
+  }
+  input {
+    width: 300px;
+  }
 }
-}
+
+
+
