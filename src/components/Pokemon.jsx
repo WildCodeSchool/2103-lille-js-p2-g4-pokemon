@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import colorTypes from '../colorTypes.json';
 import './css/Pokemon.scss';
 
-const Pokemon = ({ url }) => {
+const Pokemon = ({ url, typesFilters }) => {
   /* Declaration of a variable with useState to store the return value of the
     call to the API (useSate initialized with an object that contains a default
     value for each variable used in the component) */
@@ -47,6 +47,19 @@ const Pokemon = ({ url }) => {
       });
   }, []);
 
+  const display = () => {
+    if (typesFilters[0] !== 'all') {
+      // const types = infos.types.map((element) => element.type.name);
+
+      for (let i = 0; i < infos.types.length; i += 1) {
+        if (!typesFilters.includes(infos.types[i].type.name)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
   if (loading) {
     return <div className="loading" />;
   }
@@ -54,43 +67,47 @@ const Pokemon = ({ url }) => {
     return <div className="error" />;
   }
   return (
-    <li
-      className="pokemon"
-      style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
-    >
-      <img
-        className="pokemon-image"
-        src={infos.sprites.other['official-artwork'].front_default}
-        alt="pokemon avatar"
-      />
-      <div className="pokemon-infos">
-        <h2 className="pokemon-name">
-          {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-        </h2>
-        <p className="pokemon-id">
-          #
-          {infos.id.toLocaleString('en-US', {
-            minimumIntegerDigits: 3,
-            useGrouping: false,
-          })}
-        </p>
-        <p className="pokemon-types">
-          {infos.types.map((element) => element.type.name).join(' - ')}
-        </p>
-      </div>
-      <div className="arrow-container">
-        <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
-      </div>
-    </li>
+    display() && (
+      <li
+        className="pokemon"
+        style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
+      >
+        <img
+          className="pokemon-image"
+          src={infos.sprites.other['official-artwork'].front_default}
+          alt="pokemon avatar"
+        />
+        <div className="pokemon-infos">
+          <h2 className="pokemon-name">
+            {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
+          </h2>
+          <p className="pokemon-id">
+            #
+            {infos.id.toLocaleString('en-US', {
+              minimumIntegerDigits: 3,
+              useGrouping: false,
+            })}
+          </p>
+          <p className="pokemon-types">
+            {infos.types.map((element) => element.type.name).join(' - ')}
+          </p>
+        </div>
+        <div className="arrow-container">
+          <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
+        </div>
+      </li>
+    )
   );
 };
 
 Pokemon.propTypes = {
-  url: propTypes.string,
+  url: PropTypes.string,
+  typesFilters: PropTypes.arrayOf(PropTypes.string),
 };
 
 Pokemon.defaultProps = {
   url: 'undefined',
+  typesFilters: ['all'],
 };
 
 export default Pokemon;

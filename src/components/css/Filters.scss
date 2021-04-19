@@ -1,5 +1,35 @@
-.filters-type {
-  &.filter-active {
-    background-color: lightgreen;
+.Filters {
+  width: 100vw;
+  // background-color: lightblue;
+
+  .filters-types {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 5px;
+    justify-content: center;
+    padding: 1rem 2rem;
+
+    li {
+      list-style-type: none;
+
+      .filters-type {
+        border: 1px solid #d4d4d4;
+        border-radius: 4px;
+        width: 100%;
+        height: 30px;
+        cursor: pointer;
+        filter: grayscale(1);
+
+        &.filter-active {
+          filter: grayscale(0);
+        }
+
+        &:hover {
+          transform: translate(1px, 1px);
+          opacity: 80%;
+        }
+      }
+    }
   }
 }

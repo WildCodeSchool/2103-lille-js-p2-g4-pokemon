@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import './css/Filters.scss';
+import PropTypes from 'prop-types';
 import colorTypes from '../colorTypes.json';
+import './css/Filters.scss';
 
-export default function Filters() {
+export default function Filters({ setTypesFilters }) {
   const [types, setTypes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -27,6 +28,18 @@ export default function Filters() {
     e.target.classList.toggle('filter-active');
   };
 
+  const handleTypes = () => {
+    const activeTypes = document.querySelectorAll(
+      '.filters-type.filter-active'
+    );
+    const selectedTypes = [];
+
+    activeTypes.forEach((type) => {
+      selectedTypes.push(type.dataset.value);
+    });
+    setTypesFilters(selectedTypes);
+  };
+
   if (loading) {
     return (
       <div className="filters">
@@ -40,27 +53,41 @@ export default function Filters() {
   }
 
   return (
-    <div className="filters">
-      <ul className="filters-types">
-        {types.map((type) => {
-          return (
-            type.name !== 'unknown' && (
-              <li key={type.name}>
-                <button
-                  type="button"
-                  data-type="type"
-                  data-value={type.name}
-                  className="filters-type filter-active"
-                  onClick={handleActiveFilter}
-                  style={{ backgroundColor: colorTypes[type.name] }}
-                >
-                  {type.name}
-                </button>
-              </li>
-            )
-          );
-        })}
-      </ul>
+    <div className="Filters">
+      <div className="filter-wrapper">
+        <ul className="filters-types">
+          {types.map((type) => {
+            return (
+              type.name !== 'unknown' &&
+              type.name !== 'shadow' && (
+                <li key={type.name}>
+                  <button
+                    type="button"
+                    data-type="type"
+                    data-value={type.name}
+                    className="filters-type filter-active"
+                    onClick={handleActiveFilter}
+                    style={{ backgroundColor: colorTypes[type.name] }}
+                  >
+                    {type.name}
+                  </button>
+                </li>
+              )
+            );
+          })}
+        </ul>
+      </div>
+      <button type="button" className="filter-submit" onClick={handleTypes}>
+        SUBMIT
+      </button>
     </div>
   );
 }
+
+Filters.propTypes = {
+  setTypesFilters: PropTypes.func,
+};
+
+Filters.defaultProps = {
+  setTypesFilters: () => {},
+};

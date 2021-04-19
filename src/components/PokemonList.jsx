@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import Pokemon from './Pokemon';
 import './css/PokemonList.scss';
 
-const PokemonList = () => {
+const PokemonList = ({ typesFilters }) => {
   /* Declaration of a variable with useState to store the return value of the
     call to the API (useSate initialized with an empty array) */
   const [pokemons, setPokemons] = useState([]);
@@ -24,10 +25,24 @@ const PokemonList = () => {
         "pokemons", call of the <Pokemon /> component with the API url of this
         one as props to display the Pokemon */}
       {pokemons.map((pokemon) => {
-        return <Pokemon key={pokemon.name} url={pokemon.url} />;
+        return (
+          <Pokemon
+            key={pokemon.name}
+            url={pokemon.url}
+            typesFilters={typesFilters}
+          />
+        );
       })}
     </ul>
   );
+};
+
+PokemonList.propTypes = {
+  typesFilters: PropTypes.arrayOf(PropTypes.string),
+};
+
+PokemonList.defaultProps = {
+  typesFilters: ['all'],
 };
 
 export default PokemonList;
