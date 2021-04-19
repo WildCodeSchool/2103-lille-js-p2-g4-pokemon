@@ -9,6 +9,7 @@ const Pokemon = ({ url }) => {
     call to the API (useSate initialized with an object that contains a default
     value for each variable used in the component) */
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [infos, setinfos] = useState({
     sprites: {
       other: {
@@ -32,14 +33,22 @@ const Pokemon = ({ url }) => {
   /* Call the API with the url received in props to get the information of the
     Pokemon we want to display */
   useEffect(() => {
-    axios.get(url).then(({ data }) => {
-      setinfos(data);
-      setLoading(false);
-    });
+    axios
+      .get(url)
+      .then(({ data }) => {
+        setinfos(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+      });
   }, []);
 
   if (loading) {
     return <div className="loading" />;
+  }
+  if (error) {
+    return <div className="error" />;
   }
   return (
     <li
