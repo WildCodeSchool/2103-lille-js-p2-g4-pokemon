@@ -4,9 +4,7 @@ import './css/Filters.scss';
 import colorTypes from '../colorTypes.json';
 
 export default function Filters() {
-  const [types, setTypes] = useState({
-    results: [],
-  });
+  const [types, setTypes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
