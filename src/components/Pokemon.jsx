@@ -5,9 +5,6 @@ import colorTypes from '../colorTypes.json';
 import './css/Pokemon.scss';
 
 const Pokemon = ({ url, typesFilters }) => {
-  /* Declaration of a variable with useState to store the return value of the
-    call to the API (useSate initialized with an object that contains a default
-    value for each variable used in the component) */
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [infos, setinfos] = useState({
@@ -30,8 +27,6 @@ const Pokemon = ({ url, typesFilters }) => {
     ],
   });
 
-  /* Call the API with the url received in props to get the information of the
-    Pokemon we want to display */
   useEffect(() => {
     setLoading(true);
     axios
@@ -49,8 +44,6 @@ const Pokemon = ({ url, typesFilters }) => {
 
   const display = () => {
     if (typesFilters[0] !== 'all') {
-      // const types = infos.types.map((element) => element.type.name);
-
       for (let i = 0; i < infos.types.length; i += 1) {
         if (!typesFilters.includes(infos.types[i].type.name)) {
           return false;
