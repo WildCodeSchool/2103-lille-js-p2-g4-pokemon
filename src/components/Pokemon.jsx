@@ -43,12 +43,14 @@ const Pokemon = ({ url, typesFilters }) => {
   }, []);
 
   const display = () => {
-    if (typesFilters[0] !== 'all') {
-      for (let i = 0; i < infos.types.length; i += 1) {
-        if (!typesFilters.includes(infos.types[i].type.name)) {
-          return false;
+    if (typesFilters.length !== 0) {
+      for (let i = 0; i < typesFilters.length; i += 1) {
+        // if (!typesFilters.includes(infos.types[i].type.name)) {
+        if (infos.types.map((e) => e.type.name).includes(typesFilters[i])) {
+          return true;
         }
       }
+      return false;
     }
     return true;
   };
@@ -100,7 +102,7 @@ Pokemon.propTypes = {
 
 Pokemon.defaultProps = {
   url: 'undefined',
-  typesFilters: ['all'],
+  typesFilters: [],
 };
 
 export default Pokemon;

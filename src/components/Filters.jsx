@@ -65,8 +65,11 @@ export default function Filters({ setTypesFilters }) {
                     type="button"
                     data-type="type"
                     data-value={type.name}
-                    className="filters-type filter-active"
-                    onClick={handleActiveFilter}
+                    className="filters-type"
+                    onClick={(e) => {
+                      handleActiveFilter(e);
+                      handleTypes();
+                    }}
                     style={{ backgroundColor: colorTypes[type.name] }}
                   >
                     {type.name}
@@ -77,9 +80,6 @@ export default function Filters({ setTypesFilters }) {
           })}
         </ul>
       </div>
-      <button type="button" className="filter-submit" onClick={handleTypes}>
-        SUBMIT
-      </button>
     </div>
   );
 }

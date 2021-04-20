@@ -4,13 +4,14 @@ import Filters from './Filters';
 import PokemonList from './PokemonList';
 
 const Homepage = () => {
-  const [typesFilters, setTypesFilters] = useState(['all']);
+  const [typesFilters, setTypesFilters] = useState([]);
 
   return (
     <div className="Homepage">
-      <Filters typesFilters={typesFilters} setTypesFilters={setTypesFilters} />
+      <Filters setTypesFilters={setTypesFilters} />
       <PokemonList typesFilters={typesFilters} />
     </div>
   );
 };
+
 export default Homepage;
