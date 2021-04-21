@@ -10,11 +10,11 @@ const Header = () => {
             type="search"
             name="siteSearch"
             id="searchBar"
-            placeholder="Search by name or number of the pokemon"
+            placeholder=" Search your Pokemon by ID or by Name..."
           />
         </form>
       </div>
-      <div />
+      <div className="divEmpty" />
     </header>
   );
 };

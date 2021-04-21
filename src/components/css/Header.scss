@@ -1,18 +1,24 @@
 .Header {
-  height: 100px;
-  width: 100vw;
-  background-color: #CC0000;
+  height: 90px;
+  width: auto;
+  background-color: #e24b4b;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: 10px;
   img {
-    width: 70px;
+    width: 100px;
     margin: 10px;
   }
   input {
     width: 300px;
   }
+  .divEmpty {
+    width: 100px;
+    margin: 10px;
+  }
 }
-
-
-
+#searchBar {
+  height: 35px;
+  width: 50vw;
+}
