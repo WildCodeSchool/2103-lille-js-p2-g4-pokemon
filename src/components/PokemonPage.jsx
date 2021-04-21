@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import './css/PokemonPage.scss';
 
-const PokemonPage = () => {
+const PokemonPage = (props) => {
   const [infos, setinfos] = useState({
     abilities: [
       {
@@ -31,9 +32,13 @@ const PokemonPage = () => {
   });
 
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/ditto').then(({ data }) => {
-      setinfos(data);
-    });
+    axios
+      .get(
+        `https://pokeapi.co/api/v2/pokemon/${props.match.params.pokemonName}`
+      )
+      .then(({ data }) => {
+        setinfos(data);
+      });
   }, []);
 
   return (
@@ -74,6 +79,14 @@ const PokemonPage = () => {
       </div>
     </div>
   );
+};
+
+PokemonPage.propTypes = {
+  match: PropTypes.objectOf(PropTypes.object),
+};
+
+PokemonPage.defaultProps = {
+  match: {},
 };
 
 export default PokemonPage;
