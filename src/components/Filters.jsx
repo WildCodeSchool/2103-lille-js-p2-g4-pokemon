@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import FiltersTypes from './FiltersTypes';
+import FiltersAbilities from './FiltersAbilities';
 import './css/Filters.scss';
 
 export default function Filters({ setTypesFilters }) {
@@ -7,6 +8,7 @@ export default function Filters({ setTypesFilters }) {
     <div className="Filters">
       <div className="filter-wrapper">
         <FiltersTypes setTypesFilters={setTypesFilters} />
+        <FiltersAbilities />
       </div>
     </div>
   );
