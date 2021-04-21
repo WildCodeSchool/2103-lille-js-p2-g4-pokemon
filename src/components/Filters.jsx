@@ -29,10 +29,10 @@ export default function Filters({ setTypesFilters }) {
   };
 
   const handleTypes = () => {
+    const selectedTypes = [];
     const activeTypes = document.querySelectorAll(
       '.filters-type.filter-active'
     );
-    const selectedTypes = [];
 
     activeTypes.forEach((type) => {
       selectedTypes.push(type.dataset.value);
@@ -40,47 +40,41 @@ export default function Filters({ setTypesFilters }) {
     setTypesFilters(selectedTypes);
   };
 
-  if (loading) {
-    return (
-      <div className="filters">
-        <div className="pokespinner" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return <div className="error" />;
-  }
-
   return (
-    <div className="Filters">
-      <div className="filter-wrapper">
-        <ul className="filters-types">
-          {types.map((type) => {
-            return (
-              type.name !== 'unknown' &&
-              type.name !== 'shadow' && (
-                <li key={type.name}>
-                  <button
-                    type="button"
-                    data-type="type"
-                    data-value={type.name}
-                    className="filters-type"
-                    onClick={(e) => {
-                      handleActiveFilter(e);
-                      handleTypes();
-                    }}
-                    style={{ backgroundColor: colorTypes[type.name] }}
-                  >
-                    {type.name}
-                  </button>
-                </li>
-              )
-            );
-          })}
-        </ul>
-      </div>
-    </div>
+    <>
+      {loading && <div className="pokespinner" />}
+      {error && <div className="error" />}
+      {!loading && !error && (
+        <div className="Filters">
+          <div className="filter-wrapper">
+            <ul className="filters-types">
+              {types.map((type) => {
+                return (
+                  type.name !== 'unknown' &&
+                  type.name !== 'shadow' && (
+                    <li key={type.name}>
+                      <button
+                        type="button"
+                        data-type="type"
+                        data-value={type.name}
+                        className="filters-type"
+                        onClick={(e) => {
+                          handleActiveFilter(e);
+                          handleTypes();
+                        }}
+                        style={{ backgroundColor: colorTypes[type.name] }}
+                      >
+                        {type.name}
+                      </button>
+                    </li>
+                  )
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

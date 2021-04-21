@@ -44,9 +44,8 @@ const Pokemon = ({ url, typesFilters }) => {
 
   const display = () => {
     if (typesFilters.length !== 0) {
-      for (let i = 0; i < typesFilters.length; i += 1) {
-        // if (!typesFilters.includes(infos.types[i].type.name)) {
-        if (infos.types.map((e) => e.type.name).includes(typesFilters[i])) {
+      for (let i = 0; i < infos.types.length; i += 1) {
+        if (typesFilters.includes(infos.types[i].type.name)) {
           return true;
         }
       }
@@ -55,43 +54,41 @@ const Pokemon = ({ url, typesFilters }) => {
     return true;
   };
 
-  if (loading) {
-    return <div className="loading" />;
-  }
-  if (error) {
-    return <div className="error" />;
-  }
   return (
-    display() && (
-      <li
-        className="pokemon"
-        style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
-      >
-        <img
-          className="pokemon-image"
-          src={infos.sprites.other['official-artwork'].front_default}
-          alt="pokemon avatar"
-        />
-        <div className="pokemon-infos">
-          <h2 className="pokemon-name">
-            {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-          </h2>
-          <p className="pokemon-id">
-            #
-            {infos.id.toLocaleString('en-US', {
-              minimumIntegerDigits: 3,
-              useGrouping: false,
-            })}
-          </p>
-          <p className="pokemon-types">
-            {infos.types.map((element) => element.type.name).join(' - ')}
-          </p>
-        </div>
-        <div className="arrow-container">
-          <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
-        </div>
-      </li>
-    )
+    <>
+      {loading && <div className="loading" />}
+      {error && <div className="error" />}
+      {!loading && !error && display() && (
+        <li
+          className="pokemon"
+          style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
+        >
+          <img
+            className="pokemon-image"
+            src={infos.sprites.other['official-artwork'].front_default}
+            alt="pokemon avatar"
+          />
+          <div className="pokemon-infos">
+            <h2 className="pokemon-name">
+              {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
+            </h2>
+            <p className="pokemon-id">
+              #
+              {infos.id.toLocaleString('en-US', {
+                minimumIntegerDigits: 3,
+                useGrouping: false,
+              })}
+            </p>
+            <p className="pokemon-types">
+              {infos.types.map((element) => element.type.name).join(' - ')}
+            </p>
+          </div>
+          <div className="arrow-container">
+            <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
+          </div>
+        </li>
+      )}
+    </>
   );
 };
 
