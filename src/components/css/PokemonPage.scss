@@ -1,0 +1,46 @@
+.pokemonPage {
+  margin-left: 10vw;
+  width: 80vw;
+  border: solid black 2px;
+
+  .pokedex {
+    display: flex;
+    justify-content: space-between;
+    border: solid red 2px;
+
+    .pokeWeak {
+      display: flex;
+      flex-direction: column;
+      border: solid blue 2px;
+
+      .basicsInfos {
+        display: flex;
+        border: solid yellowgreen 2px;
+        img {
+          width: 250px;
+        }
+      }
+    }
+
+    .pokeStats {
+      padding: 10px;
+      border: solid blue 2px;
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        padding: 20px 10px;
+        background-color: #ededed;
+        li {
+          margin: 10px 0px;
+          list-style-type: none;
+        }
+      }
+    }
+  }
+
+  .weaknesses {
+    border: solid yellowgreen 2px;
+  }
+}
