@@ -26,6 +26,7 @@ const Pokemon = ({ url, typesFilters }) => {
       },
     ],
   });
+  const [display, setDisplay] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -42,23 +43,26 @@ const Pokemon = ({ url, typesFilters }) => {
       });
   }, []);
 
-  const display = () => {
+  useEffect(() => {
     if (typesFilters.length !== 0) {
       for (let i = 0; i < infos.types.length; i += 1) {
         if (typesFilters.includes(infos.types[i].type.name)) {
+          setDisplay(true);
           return true;
         }
       }
+      setDisplay(false);
       return false;
     }
+    setDisplay(true);
     return true;
-  };
+  }, [typesFilters]);
 
   return (
     <>
       {loading && <div className="loading" />}
       {error && <div className="error" />}
-      {!loading && !error && display() && (
+      {!loading && !error && display && (
         <li
           className="pokemon"
           style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
