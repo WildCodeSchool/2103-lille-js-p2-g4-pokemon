@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Masonry from 'react-masonry-css';
 import Pokemon from './Pokemon';
 import './css/PokemonList.scss';
 
@@ -19,14 +20,20 @@ const PokemonList = () => {
   }, []);
 
   return (
-    <ul className="pokemon-list">
-      {/* For each pokemon returned by the API and stored in the useState:
+    <Masonry
+      breakpointCols={1}
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column"
+    >
+      <ul className="pokemon-list">
+        {/* For each pokemon returned by the API and stored in the useState:
         "pokemons", call of the <Pokemon /> component with the API url of this
         one as props to display the Pokemon */}
-      {pokemons.map((pokemon) => {
-        return <Pokemon key={pokemon.name} url={pokemon.url} />;
-      })}
-    </ul>
+        {pokemons.map((pokemon) => {
+          return <Pokemon key={pokemon.name} url={pokemon.url} />;
+        })}
+      </ul>
+    </Masonry>
   );
 };
 
