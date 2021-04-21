@@ -42,7 +42,7 @@ const Pokemon = ({ url }) => {
       className="pokemon"
       style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
     >
-      <Link to={`/pokemon-infos/${infos.name}`}>
+      <Link to={`/${infos.name}`}>
         <img
           className="pokemon-image"
           src={infos.sprites.other['official-artwork'].front_default}

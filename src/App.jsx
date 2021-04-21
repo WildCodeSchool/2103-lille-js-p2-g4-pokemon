@@ -8,7 +8,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route path="/pokemon-infos/:pokemonName" component={PokemonPage} />
+          <Route path="/:pokemonName" component={PokemonPage} />
         </Switch>
       </div>
     </BrowserRouter>
