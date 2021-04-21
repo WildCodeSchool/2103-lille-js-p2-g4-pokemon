@@ -10,7 +10,7 @@ export default function FiltersAbilities({ setAbilityFilters }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get('https://pokeapi.co/api/v2/ability?offset=0&limit=267')
+      .get('https://pokeapi.co/api/v2/ability?offset=0&limit=266')
       .then(({ data }) => {
         setAbilities(data.results);
       })
@@ -40,9 +40,11 @@ export default function FiltersAbilities({ setAbilityFilters }) {
             handleAbility(e);
           }}
         >
-          <option valut="all">all</option>
+          <option value="all">all</option>
           {abilities.map((ability) => (
-            <option value={ability.name}>{ability.name}</option>
+            <option key={ability.name} value={ability.name}>
+              {ability.name}
+            </option>
           ))}
         </select>
       )}

@@ -50,28 +50,32 @@ const Pokemon = ({ url, typesFilters, abilityFilters }) => {
       });
   }, []);
 
-  useEffect(() => {
+  const displayType = () => {
     if (typesFilters.length !== 0) {
       for (let i = 0; i < infos.types.length; i += 1) {
         if (typesFilters.includes(infos.types[i].type.name)) {
-          setDisplay(true);
           return true;
         }
       }
-      setDisplay(false);
       return false;
     }
+    return true;
+  };
+
+  const displayAbility = () => {
     if (
       abilityFilters !== 'all' &&
       !infos.abilities
         .map((element) => element.ability.name)
         .includes(abilityFilters)
     ) {
-      setDisplay(false);
       return false;
     }
-    setDisplay(true);
     return true;
+  };
+
+  useEffect(() => {
+    setDisplay(displayType() && displayAbility());
   }, [typesFilters, abilityFilters]);
 
   return (
