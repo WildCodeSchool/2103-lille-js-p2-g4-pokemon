@@ -9,7 +9,7 @@ const PokemonList = ({ typesFilters }) => {
 
   useEffect(() => {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=50&offset=0')
+      .get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
       .then(({ data }) => {
         setPokemons(data.results);
       });
