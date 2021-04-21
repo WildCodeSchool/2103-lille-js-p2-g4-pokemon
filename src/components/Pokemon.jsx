@@ -4,10 +4,17 @@ import PropTypes from 'prop-types';
 import colorTypes from '../colorTypes.json';
 import './css/Pokemon.scss';
 
-const Pokemon = ({ url, typesFilters }) => {
+const Pokemon = ({ url, typesFilters, abilityFilters }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [infos, setinfos] = useState({
+    abilities: [
+      {
+        ability: {
+          name: 'Fatalfoutre',
+        },
+      },
+    ],
     sprites: {
       other: {
         'official-artwork': {
@@ -54,9 +61,18 @@ const Pokemon = ({ url, typesFilters }) => {
       setDisplay(false);
       return false;
     }
+    if (
+      abilityFilters !== 'all' &&
+      !infos.abilities
+        .map((element) => element.ability.name)
+        .includes(abilityFilters)
+    ) {
+      setDisplay(false);
+      return false;
+    }
     setDisplay(true);
     return true;
-  }, [typesFilters]);
+  }, [typesFilters, abilityFilters]);
 
   return (
     <>
@@ -99,11 +115,13 @@ const Pokemon = ({ url, typesFilters }) => {
 Pokemon.propTypes = {
   url: PropTypes.string,
   typesFilters: PropTypes.arrayOf(PropTypes.string),
+  abilityFilters: PropTypes.string,
 };
 
 Pokemon.defaultProps = {
   url: 'undefined',
   typesFilters: [],
+  abilityFilters: 'all',
 };
 
 export default Pokemon;

@@ -5,11 +5,18 @@ import PokemonList from './PokemonList';
 
 const Homepage = () => {
   const [typesFilters, setTypesFilters] = useState([]);
+  const [abilityFilters, setAbilityFilters] = useState('all');
 
   return (
     <div className="Homepage">
-      <Filters setTypesFilters={setTypesFilters} />
-      <PokemonList typesFilters={typesFilters} />
+      <Filters
+        setTypesFilters={setTypesFilters}
+        setAbilityFilters={setAbilityFilters}
+      />
+      <PokemonList
+        typesFilters={typesFilters}
+        abilityFilters={abilityFilters}
+      />
     </div>
   );
 };

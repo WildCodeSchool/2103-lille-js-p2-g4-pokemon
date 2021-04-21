@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Pokemon from './Pokemon';
 import './css/PokemonList.scss';
 
-const PokemonList = ({ typesFilters }) => {
+const PokemonList = ({ typesFilters, abilityFilters }) => {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const PokemonList = ({ typesFilters }) => {
             key={pokemon.name}
             url={pokemon.url}
             typesFilters={typesFilters}
+            abilityFilters={abilityFilters}
           />
         );
       })}
@@ -32,10 +33,12 @@ const PokemonList = ({ typesFilters }) => {
 
 PokemonList.propTypes = {
   typesFilters: PropTypes.arrayOf(PropTypes.string),
+  abilityFilters: PropTypes.string,
 };
 
 PokemonList.defaultProps = {
   typesFilters: [],
+  abilityFilters: 'all',
 };
 
 export default PokemonList;
