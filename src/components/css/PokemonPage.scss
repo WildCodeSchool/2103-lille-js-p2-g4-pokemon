@@ -1,6 +1,7 @@
 .pokemonPage {
   margin-left: 10vw;
   width: 80vw;
+  min-width: 700px;
   border: solid black 2px;
 
   .pokedex {
@@ -11,13 +12,25 @@
     .pokeWeak {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       border: solid blue 2px;
 
       .basicsInfos {
+        margin: 5px;
         display: flex;
+        justify-content: flex-start;
+        align-items: center;
         border: solid yellowgreen 2px;
         img {
-          width: 250px;
+          width: 350px;
+          box-sizing: border-box;
+        }
+        .nameNumber {
+          font-size: 2em;
+          border: grey solid 2px;
+          h1 {
+            color: grey;
+          }
         }
       }
     }
@@ -26,6 +39,7 @@
       padding: 10px;
       border: solid blue 2px;
       ul {
+        font-size: 1.2em;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -41,6 +55,10 @@
   }
 
   .weaknesses {
+    text-align: center;
+    font-size: 200%;
+    margin: 5px;
+    height: 30%;
     border: solid yellowgreen 2px;
   }
 }

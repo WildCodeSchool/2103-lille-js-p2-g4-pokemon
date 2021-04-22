@@ -64,15 +64,17 @@ const PokemonPage = (props) => {
         </div>
         <div className="pokeStats">
           <ul>
-            <li>WEIGHT: {infos.weight} kg</li>
+            <li>WEIGHT: {infos.weight} lbs</li>
             <li>HEIGHT: {infos.height} cm</li>
             <li>e: </li>
             <li>XP: {infos.base_experience} pts</li>
             <li>
               ABILITIES:
-              {infos.abilities
-                .map((element) => element.ability.name)
-                .join(' - ')}
+              <p>
+                {infos.abilities
+                  .map((element) => element.ability.name)
+                  .join(' - ')}
+              </p>
             </li>
           </ul>
         </div>
