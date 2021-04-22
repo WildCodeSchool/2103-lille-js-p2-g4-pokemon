@@ -3,19 +3,30 @@ import FiltersTypes from './FiltersTypes';
 import FiltersAbilities from './FiltersAbilities';
 import './css/Filters.scss';
 
-export default function Filters({ setTypesFilters, setAbilityFilters }) {
+export default function Filters({
+  setTypesFilters,
+  setAbilityFilters,
+  setHeightFilters,
+  setWeightFilters,
+}) {
   const resetFilters = () => {
     const activeTypes = document.querySelectorAll('.button-types');
     const activeAbility = document.querySelector('#abilitySelect');
+    const activeHeight = document.querySelector('#heightSelect');
+    const activeWeight = document.querySelector('#weightSelect');
 
     activeTypes.forEach((button) => {
       button.classList.remove(...button.classList);
       button.classList.add('button-types');
     });
     activeAbility.value = 'all';
+    activeHeight.value = 'all';
+    activeWeight.value = 'all';
 
     setTypesFilters([]);
     setAbilityFilters('all');
+    setHeightFilters('all');
+    setWeightFilters('all');
   };
 
   return (
@@ -35,20 +46,40 @@ export default function Filters({ setTypesFilters, setAbilityFilters }) {
           <FiltersAbilities setAbilityFilters={setAbilityFilters} />
           <div className="select-height">
             <h2>Height</h2>
-            <select name="height" id="heightSelect">
+            <select
+              name="height"
+              id="heightSelect"
+              onChange={(e) => {
+                const selectBox = e.target;
+
+                setHeightFilters(
+                  selectBox.options[selectBox.selectedIndex].value
+                );
+              }}
+            >
               <option>all</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              <option>small</option>
+              <option>medium</option>
+              <option>big</option>
             </select>
           </div>
           <div className="select-weight">
             <h2>weight</h2>
-            <select name="weight" id="weightSelect">
+            <select
+              name="weight"
+              id="weightSelect"
+              onChange={(e) => {
+                const selectBox = e.target;
+
+                setWeightFilters(
+                  selectBox.options[selectBox.selectedIndex].value
+                );
+              }}
+            >
               <option>all</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              <option>light</option>
+              <option>medium</option>
+              <option>heavy</option>
             </select>
           </div>
         </div>
@@ -75,9 +106,13 @@ export default function Filters({ setTypesFilters, setAbilityFilters }) {
 Filters.propTypes = {
   setTypesFilters: PropTypes.func,
   setAbilityFilters: PropTypes.func,
+  setHeightFilters: PropTypes.func,
+  setWeightFilters: PropTypes.func,
 };
 
 Filters.defaultProps = {
   setTypesFilters: () => {},
   setAbilityFilters: () => {},
+  setHeightFilters: () => {},
+  setWeightFilters: () => {},
 };

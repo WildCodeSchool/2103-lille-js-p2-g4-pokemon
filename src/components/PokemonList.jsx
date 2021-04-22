@@ -4,12 +4,17 @@ import PropTypes from 'prop-types';
 import Pokemon from './Pokemon';
 import './css/PokemonList.scss';
 
-const PokemonList = ({ typesFilters, abilityFilters }) => {
+const PokemonList = ({
+  typesFilters,
+  abilityFilters,
+  heightFilters,
+  weightFilters,
+}) => {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=550')
+      .get('https://pokeapi.co/api/v2/pokemon?limit=100&offset=650')
       .then(({ data }) => {
         setPokemons(data.results);
       });
@@ -24,6 +29,8 @@ const PokemonList = ({ typesFilters, abilityFilters }) => {
             url={pokemon.url}
             typesFilters={typesFilters}
             abilityFilters={abilityFilters}
+            heightFilters={heightFilters}
+            weightFilters={weightFilters}
           />
         );
       })}
@@ -34,11 +41,15 @@ const PokemonList = ({ typesFilters, abilityFilters }) => {
 PokemonList.propTypes = {
   typesFilters: PropTypes.arrayOf(PropTypes.string),
   abilityFilters: PropTypes.string,
+  heightFilters: PropTypes.string,
+  weightFilters: PropTypes.string,
 };
 
 PokemonList.defaultProps = {
   typesFilters: [],
   abilityFilters: 'all',
+  heightFilters: 'all',
+  weightFilters: 'all',
 };
 
 export default PokemonList;

@@ -4,17 +4,24 @@ import PropTypes from 'prop-types';
 import './css/Pokemon.scss';
 import './css/colorTypes.scss';
 
-const Pokemon = ({ url, typesFilters, abilityFilters }) => {
+const Pokemon = ({
+  url,
+  typesFilters,
+  abilityFilters,
+  heightFilters,
+  weightFilters,
+}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [infos, setinfos] = useState({
     abilities: [
       {
         ability: {
-          name: 'Fatalfoutre',
+          name: 'Fatalfoudre',
         },
       },
     ],
+    height: 0,
     sprites: {
       other: {
         'official-artwork': {
@@ -32,6 +39,7 @@ const Pokemon = ({ url, typesFilters, abilityFilters }) => {
         },
       },
     ],
+    weight: 0,
   });
   const [display, setDisplay] = useState(true);
 
@@ -74,9 +82,37 @@ const Pokemon = ({ url, typesFilters, abilityFilters }) => {
     return true;
   };
 
+  const displayHeight = () => {
+    if (heightFilters === 'small') {
+      return infos.height < 10;
+    }
+    if (heightFilters === 'medium') {
+      return infos.height >= 10 && infos.height <= 20;
+    }
+    if (heightFilters === 'big') {
+      return infos.height > 20;
+    }
+    return true;
+  };
+
+  const displayWeight = () => {
+    if (weightFilters === 'light') {
+      return infos.weight < 1000;
+    }
+    if (weightFilters === 'medium') {
+      return infos.weight >= 1000 && infos.weight <= 3000;
+    }
+    if (weightFilters === 'heavy') {
+      return infos.weight > 3000;
+    }
+    return true;
+  };
+
   useEffect(() => {
-    setDisplay(displayType() && displayAbility());
-  }, [typesFilters, abilityFilters]);
+    setDisplay(
+      displayType() && displayAbility() && displayHeight() && displayWeight()
+    );
+  }, [typesFilters, abilityFilters, heightFilters, weightFilters]);
 
   return (
     <>
@@ -117,12 +153,16 @@ Pokemon.propTypes = {
   url: PropTypes.string,
   typesFilters: PropTypes.arrayOf(PropTypes.string),
   abilityFilters: PropTypes.string,
+  heightFilters: PropTypes.string,
+  weightFilters: PropTypes.string,
 };
 
 Pokemon.defaultProps = {
   url: 'undefined',
   typesFilters: [],
   abilityFilters: 'all',
+  heightFilters: 'all',
+  weightFilters: 'all',
 };
 
 export default Pokemon;
