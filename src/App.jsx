@@ -1,9 +1,12 @@
 import Homepage from './components/Homepage';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <Homepage />
+      <main>
+        <Homepage />
+      </main>
     </div>
   );
 }

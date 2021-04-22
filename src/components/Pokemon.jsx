@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import colorTypes from '../colorTypes.json';
 import './css/Pokemon.scss';
+import './css/colorTypes.scss';
 
 const Pokemon = ({ url, typesFilters, abilityFilters }) => {
   const [loading, setLoading] = useState(false);
@@ -83,10 +83,7 @@ const Pokemon = ({ url, typesFilters, abilityFilters }) => {
       {loading && <div className="loading" />}
       {error && <div className="error" />}
       {!loading && !error && display && (
-        <li
-          className="pokemon"
-          style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
-        >
+        <li className={`pokemon ${infos.types[0].type.name}`}>
           <img
             className="pokemon-image"
             src={infos.sprites.other['official-artwork'].front_default}
