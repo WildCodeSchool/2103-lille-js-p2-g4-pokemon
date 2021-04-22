@@ -8,7 +8,7 @@ const PokemonPage = (props) => {
     abilities: [
       {
         ability: {
-          name: 'Fatalfoutre',
+          name: 'undefined',
         },
       },
     ],
