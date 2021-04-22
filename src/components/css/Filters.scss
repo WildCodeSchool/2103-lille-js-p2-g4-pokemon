@@ -1,16 +1,40 @@
 .Filters {
   width: 100%;
 
-  .types-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
+  .filter-wrapper {
+    padding: 2rem 0;
+    position: relative;
 
-    .filters-name {
+    .button-types-refresh {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      margin-left: 20px;
+
+      &:focus {
+        outline: none;
+      }
+
+      svg {
+        width: 50px;
+        height: 50px;
+        fill: #a9a9a9;
+
+        &:hover {
+          fill: #e24b4b;
+          animation: refresh 0.3s ease-in-out;
+        }
+      }
+    }
+
+    .types-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      padding: 1rem 0;
 
       h1 {
         font-weight: 400;
@@ -19,53 +43,64 @@
         text-transform: uppercase;
       }
 
-      .button-types-refresh {
-        position: relative;
-        top: 1px;
-        border: none;
-        background: none;
-        cursor: pointer;
-        margin-left: 20px;
+      .filters-types {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
 
-        &:focus {
-          outline: none;
-        }
+        li {
+          list-style-type: none;
+          margin: 10px;
 
-        svg {
-          width: 36px;
-          height: 36px;
-          fill: #a9a9a9;
+          .button-types {
+            width: 120px;
+            height: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
 
-          &:hover {
-            fill: #e24b4b;
-            animation: refresh 0.3s ease-in-out;
+            &:hover {
+              transform: translate(1px, 1px);
+            }
           }
         }
       }
     }
-
-    .filters-types {
+    .filters-others-container {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-      padding: 10px;
+      justify-content: space-around;
+      border-top: 1px solid #cacacc;
+      border-bottom: 1px solid #cacacc;
+      padding: 1.5rem 0;
 
-      li {
-        list-style-type: none;
-        margin: 10px;
+      div {
+        text-align: center;
+        h2 {
+          font-weight: 400;
+          font-size: 1.4rem;
+          color: #212121;
+          text-transform: uppercase;
+          margin-bottom: 5px;
+        }
 
-        .button-types {
-          width: 120px;
+        select {
+          width: 200px;
           height: 30px;
+          text-align: center;
+          text-align-last: center;
+          background-color: #efefef;
+          border: none;
           font-weight: 600;
           font-size: 0.9rem;
-          border: none;
-          border-radius: 3px;
+          padding-left: 10px;
           cursor: pointer;
 
-          &:hover {
-            transform: translate(1px, 1px);
+          &:focus {
+            outline: none;
           }
         }
       }

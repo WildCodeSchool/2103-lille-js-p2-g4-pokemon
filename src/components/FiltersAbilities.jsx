@@ -33,20 +33,23 @@ export default function FiltersAbilities({ setAbilityFilters }) {
       {isLoading && <div className="pokespinner" />}
       {error && <div className="error" />}
       {!isLoading && !error && (
-        <select
-          name="Abilities"
-          id="abilitySelect"
-          onChange={(e) => {
-            handleAbility(e);
-          }}
-        >
-          <option value="all">all</option>
-          {abilities.map((ability) => (
-            <option key={ability.name} value={ability.name}>
-              {ability.name}
-            </option>
-          ))}
-        </select>
+        <div className="select-ability">
+          <h2>Ability</h2>
+          <select
+            name="abilities"
+            id="abilitySelect"
+            onChange={(e) => {
+              handleAbility(e);
+            }}
+          >
+            <option value="all">all</option>
+            {abilities.map((ability) => (
+              <option key={ability.name} value={ability.name}>
+                {ability.name}
+              </option>
+            ))}
+          </select>
+        </div>
       )}
     </>
   );
