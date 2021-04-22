@@ -1,9 +1,16 @@
 .Filters {
   width: 100%;
+  text-align: center;
 
   .filter-wrapper {
-    padding: 2rem 0;
     position: relative;
+    overflow: hidden;
+    height: 0;
+    transition: 2s;
+
+    &.open {
+      height: auto;
+    }
 
     .button-types-refresh {
       position: absolute;
@@ -35,6 +42,7 @@
       flex-direction: column;
       align-items: center;
       padding: 1rem 0;
+      margin-top: 1.5rem;
 
       h1 {
         font-weight: 400;
@@ -104,6 +112,27 @@
           }
         }
       }
+    }
+  }
+
+  .button-wrapper {
+    border: none;
+    height: 30px;
+    width: 200px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e24b4b;
+      color: #fff;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }

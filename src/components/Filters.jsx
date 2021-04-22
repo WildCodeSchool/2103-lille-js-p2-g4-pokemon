@@ -53,6 +53,21 @@ export default function Filters({ setTypesFilters, setAbilityFilters }) {
           </div>
         </div>
       </div>
+      <button
+        type="button"
+        className="button-wrapper"
+        onClick={(e) => {
+          const wrapper = document.querySelector('.filter-wrapper');
+
+          wrapper.classList.toggle('open');
+          e.target.innerHTML =
+            e.target.innerHTML === 'Show Filters'
+              ? 'Hide Filters'
+              : 'Show Filters';
+        }}
+      >
+        Show Filters
+      </button>
     </div>
   );
 }
