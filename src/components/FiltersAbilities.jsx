@@ -22,12 +22,6 @@ export default function FiltersAbilities({ setAbilityFilters }) {
       });
   }, []);
 
-  const handleAbility = (e) => {
-    const selectBox = e.target;
-
-    setAbilityFilters(selectBox.options[selectBox.selectedIndex].value);
-  };
-
   return (
     <>
       {isLoading && <div className="pokespinner" />}
@@ -39,7 +33,7 @@ export default function FiltersAbilities({ setAbilityFilters }) {
             name="abilities"
             id="abilitySelect"
             onChange={(e) => {
-              handleAbility(e);
+              setAbilityFilters(e.target.value);
             }}
           >
             <option value="all">all</option>

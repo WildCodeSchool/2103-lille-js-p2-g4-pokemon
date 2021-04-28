@@ -13,7 +13,11 @@ export default function FiltersTypes({ setTypesFilters }) {
     axios
       .get('https://pokeapi.co/api/v2/type')
       .then(({ data }) => {
-        setTypes(data.results);
+        setTypes(
+          data.results.filter(
+            (type) => type.name !== 'unknown' && type.name !== 'shadow'
+          )
+        );
       })
       .catch(() => {
         setError(true);
@@ -48,23 +52,20 @@ export default function FiltersTypes({ setTypesFilters }) {
           <ul className="filters-types">
             {types.map((type) => {
               return (
-                type.name !== 'unknown' &&
-                type.name !== 'shadow' && (
-                  <li key={type.name}>
-                    <button
-                      type="button"
-                      data-type="type"
-                      data-value={type.name}
-                      className="button-types"
-                      onClick={(e) => {
-                        handleActiveFilter(e, type.name);
-                        handleTypes();
-                      }}
-                    >
-                      {type.name}
-                    </button>
-                  </li>
-                )
+                <li key={type.name}>
+                  <button
+                    type="button"
+                    data-type="type"
+                    data-value={type.name}
+                    className="button-types"
+                    onClick={(e) => {
+                      handleActiveFilter(e, type.name);
+                      handleTypes();
+                    }}
+                  >
+                    {type.name}
+                  </button>
+                </li>
               );
             })}
           </ul>

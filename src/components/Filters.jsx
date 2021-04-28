@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import FiltersTypes from './FiltersTypes';
 import FiltersAbilities from './FiltersAbilities';
@@ -9,6 +10,8 @@ export default function Filters({
   setHeightFilters,
   setWeightFilters,
 }) {
+  const [openWrapper, setOpenWrapper] = useState(false);
+
   const resetFilters = () => {
     const activeTypes = document.querySelectorAll('.button-types');
     const activeAbility = document.querySelector('#abilitySelect');
@@ -31,7 +34,7 @@ export default function Filters({
 
   return (
     <div className="Filters">
-      <div className="filter-wrapper">
+      <div className={`filter-wrapper ${openWrapper && 'open'}`}>
         <button
           type="button"
           className="button-types-refresh"
@@ -50,11 +53,7 @@ export default function Filters({
               name="height"
               id="heightSelect"
               onChange={(e) => {
-                const selectBox = e.target;
-
-                setHeightFilters(
-                  selectBox.options[selectBox.selectedIndex].value
-                );
+                setHeightFilters(e.target.value);
               }}
             >
               <option>all</option>
@@ -69,11 +68,7 @@ export default function Filters({
               name="weight"
               id="weightSelect"
               onChange={(e) => {
-                const selectBox = e.target;
-
-                setWeightFilters(
-                  selectBox.options[selectBox.selectedIndex].value
-                );
+                setWeightFilters(e.target.value);
               }}
             >
               <option>all</option>
@@ -87,14 +82,8 @@ export default function Filters({
       <button
         type="button"
         className="button-wrapper"
-        onClick={(e) => {
-          const wrapper = document.querySelector('.filter-wrapper');
-
-          wrapper.classList.toggle('open');
-          e.target.innerHTML =
-            e.target.innerHTML === 'Show Filters'
-              ? 'Hide Filters'
-              : 'Show Filters';
+        onClick={() => {
+          setOpenWrapper(!openWrapper);
         }}
       >
         Show Filters
