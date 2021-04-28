@@ -49,7 +49,12 @@ const Pokemon = ({
     axios
       .get(url)
       .then(({ data }) => {
-        setinfos(data);
+        const newData = data;
+        newData.id = data.id.toLocaleString('en-US', {
+          minimumIntegerDigits: 3,
+          useGrouping: false,
+        });
+        setinfos(newData);
       })
       .catch(() => {
         setError(true);
@@ -132,11 +137,11 @@ const Pokemon = ({
                 {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
               </h2>
               <p className="pokemon-id">
-                #
-                {infos.id.toLocaleString('en-US', {
-                  minimumIntegerDigits: 3,
-                  useGrouping: false,
-                })}
+                {`#${infos.id}`}
+                {/* // {infos.id.toLocaleString('en-US', {
+                //   minimumIntegerDigits: 3,
+                //   useGrouping: false,
+                // })} */}
               </p>
               <p className="pokemon-types">
                 {infos.types.map((element) => element.type.name).join(' - ')}

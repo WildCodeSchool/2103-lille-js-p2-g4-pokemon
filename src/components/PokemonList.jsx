@@ -14,7 +14,7 @@ const PokemonList = ({
 
   useEffect(() => {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=200&offset=0')
+      .get('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
       .then(({ data }) => {
         setPokemons(data.results);
       });
