@@ -8,13 +8,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Switch>
-          <main>
+        <main>
+          <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/:pokemonName" component={PokemonPage} />
-          </main>
-          <Header />
-        </Switch>
+          </Switch>
+        </main>
+        <Header />
       </div>
     </BrowserRouter>
   );
