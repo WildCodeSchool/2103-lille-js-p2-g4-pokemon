@@ -7,10 +7,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Header />
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route path="/:pokemonName" component={PokemonPage} />
-          <Header />
         </Switch>
       </div>
     </BrowserRouter>

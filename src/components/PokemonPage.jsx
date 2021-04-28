@@ -79,6 +79,9 @@ const PokemonPage = (props) => {
           </ul>
         </div>
       </div>
+      <div className="evol">
+        <p>Evolutions</p>
+      </div>
     </div>
   );
 };
