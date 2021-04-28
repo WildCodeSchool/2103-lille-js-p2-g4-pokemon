@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import propTypes from 'prop-types';
 import colorTypes from '../colorTypes.json';
@@ -41,29 +42,31 @@ const Pokemon = ({ url }) => {
       className="pokemon"
       style={{ backgroundColor: colorTypes[infos.types[0].type.name] }}
     >
-      <img
-        className="pokemon-image"
-        src={infos.sprites.other['official-artwork'].front_default}
-        alt="pokemon avatar"
-      />
-      <div className="pokemon-infos">
-        <h2 className="pokemon-name">
-          {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-        </h2>
-        <p className="pokemon-id">
-          #
-          {infos.id.toLocaleString('en-US', {
-            minimumIntegerDigits: 3,
-            useGrouping: false,
-          })}
-        </p>
-        <p className="pokemon-types">
-          {infos.types.map((element) => element.type.name).join(' - ')}
-        </p>
-      </div>
-      <div className="arrow-container">
-        <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
-      </div>
+      <Link to={`/${infos.name}`}>
+        <img
+          className="pokemon-image"
+          src={infos.sprites.other['official-artwork'].front_default}
+          alt="pokemon avatar"
+        />
+        <div className="pokemon-infos">
+          <h2 className="pokemon-name">
+            {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
+          </h2>
+          <p className="pokemon-id">
+            #
+            {infos.id.toLocaleString('en-US', {
+              minimumIntegerDigits: 3,
+              useGrouping: false,
+            })}
+          </p>
+          <p className="pokemon-types">
+            {infos.types.map((element) => element.type.name).join(' - ')}
+          </p>
+        </div>
+        <div className="arrow-container">
+          <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
+        </div>
+      </Link>
     </li>
   );
 };
