@@ -60,7 +60,13 @@ const Pokemon = ({ url }) => {
             })}
           </p>
           <p className="pokemon-types">
-            {infos.types.map((element) => element.type.name).join(' - ')}
+            {infos.types
+              .map(
+                (element) =>
+                  element.type.name.charAt(0).toUpperCase() +
+                  element.type.name.slice(1)
+              )
+              .join(' - ')}
           </p>
         </div>
         <div className="arrow-container">
