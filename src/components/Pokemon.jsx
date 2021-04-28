@@ -136,13 +136,7 @@ const Pokemon = ({
               <h2 className="pokemon-name">
                 {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
               </h2>
-              <p className="pokemon-id">
-                {`#${infos.id}`}
-                {/* // {infos.id.toLocaleString('en-US', {
-                //   minimumIntegerDigits: 3,
-                //   useGrouping: false,
-                // })} */}
-              </p>
+              <p className="pokemon-id">{`#${infos.id}`}</p>
               <p className="pokemon-types">
                 {infos.types.map((element) => element.type.name).join(' - ')}
               </p>
