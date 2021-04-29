@@ -35,7 +35,7 @@ const PokemonList = ({
       <ul className="pokemon-list">
         {pokemons
           .filter((pokemon) => {
-            return pokemon.name.includes(query);
+            return pokemon.name.toUpperCase().includes(query.toUpperCase());
           })
           .map((pokemon) => {
             return (
