@@ -1,4 +1,12 @@
+.loading {
+  display: none;
+}
+
 .pokemon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   height: 380px;
   border-radius: 4px;
   padding: 1rem 0;
@@ -16,6 +24,7 @@
     justify-content: flex-start;
     align-items: center;
     text-decoration: none;
+    color: inherit;
 
     .pokemon-image {
       width: 200px;
@@ -32,14 +41,12 @@
         font-style: normal;
         font-weight: 600;
         font-size: 24px;
-        color: #1b1b1b;
         margin: 0;
       }
 
       p {
         font-weight: 600;
         font-size: 18px;
-        color: #fff;
         margin: 0;
       }
     }

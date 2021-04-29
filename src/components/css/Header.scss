@@ -1,11 +1,15 @@
 .Header {
   height: 90px;
-  width: auto;
+  width: 100vw;
   background-color: #e24b4b;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+
   img {
     width: 130px;
     margin: 10px;
