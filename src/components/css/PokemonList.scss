@@ -15,7 +15,25 @@ input {
   top: 5vh;
   left: 40vw;
   z-index: 1;
+
+  &::placeholder {
+    color: grey;
+  }
 }
-input::placeholder {
-  color: grey;
+
+#list-choice {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  text-align-last: center;
+  background-color: #efefef;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-left: 10px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }

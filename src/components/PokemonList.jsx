@@ -12,17 +12,25 @@ const PokemonList = ({
 }) => {
   const [pokemons, setPokemons] = useState([]);
   const [query, setQuery] = useState('');
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=${offset}`)
+      .then(({ data }) => {
+        setPokemons(data.results);
+      });
+  }, [offset]);
+
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
   };
 
-  useEffect(() => {
-    axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
-      .then(({ data }) => {
-        setPokemons(data.results);
-      });
-  }, []);
+  const handleList = (e) => {
+    const choice = e.target.value;
+
+    setOffset(parseInt(choice.slice(0, choice.indexOf('-')), 10) - 1);
+  };
 
   return (
     <>
@@ -32,6 +40,17 @@ const PokemonList = ({
         onChange={handleQueryChange}
         placeholder=" Search your Pokemon by name..."
       />
+      <select name="list-choice" id="list-choice" onChange={handleList}>
+        <option>1-99</option>
+        <option>100-199</option>
+        <option>200-299</option>
+        <option>300-399</option>
+        <option>400-499</option>
+        <option>500-599</option>
+        <option>600-699</option>
+        <option>700-799</option>
+        <option>800-898</option>
+      </select>
       <ul className="pokemon-list">
         {pokemons
           .filter((pokemon) => {
