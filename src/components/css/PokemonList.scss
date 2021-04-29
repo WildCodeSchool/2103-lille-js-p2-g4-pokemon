@@ -5,3 +5,17 @@
   justify-content: center;
   margin-top: 3rem;
 }
+
+input {
+  width: 20vw;
+  height: 30px;
+  border-radius: 5px;
+  border-color: transparent;
+  position: absolute;
+  top: 5vh;
+  left: 40vw;
+  z-index: 1;
+}
+input::placeholder {
+  color: grey;
+}
