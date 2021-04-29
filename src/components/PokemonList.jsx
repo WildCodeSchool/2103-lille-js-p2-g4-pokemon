@@ -11,6 +11,10 @@ const PokemonList = ({
   weightFilters,
 }) => {
   const [pokemons, setPokemons] = useState([]);
+  const [query, setQuery] = useState('');
+  const handleQueryChange = (e) => {
+    setQuery(e.target.value);
+  };
 
   useEffect(() => {
     axios
@@ -21,20 +25,32 @@ const PokemonList = ({
   }, []);
 
   return (
-    <ul className="pokemon-list">
-      {pokemons.map((pokemon) => {
-        return (
-          <Pokemon
-            key={pokemon.name}
-            url={pokemon.url}
-            typesFilters={typesFilters}
-            abilityFilters={abilityFilters}
-            heightFilters={heightFilters}
-            weightFilters={weightFilters}
-          />
-        );
-      })}
-    </ul>
+    <>
+      <input
+        type="text"
+        value={query}
+        onChange={handleQueryChange}
+        placeholder=" Search your Pokemon by name..."
+      />
+      <ul className="pokemon-list">
+        {pokemons
+          .filter((pokemon) => {
+            return pokemon.name.includes(query);
+          })
+          .map((pokemon) => {
+            return (
+              <Pokemon
+                key={pokemon.name}
+                url={pokemon.url}
+                typesFilters={typesFilters}
+                abilityFilters={abilityFilters}
+                heightFilters={heightFilters}
+                weightFilters={weightFilters}
+              />
+            );
+          })}
+      </ul>
+    </>
   );
 };
 
