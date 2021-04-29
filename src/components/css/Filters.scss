@@ -1,12 +1,18 @@
 .Filters {
-  width: 100%;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
   text-align: center;
+  background-color: #343d4e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 2px #343d4e;
+  z-index: 1;
 
   .filter-wrapper {
     position: relative;
     overflow: hidden;
     height: 0;
-    transition: 2s;
 
     &.open {
       height: auto;
@@ -31,7 +37,7 @@
         fill: #a9a9a9;
 
         &:hover {
-          fill: #e24b4b;
+          fill: #ad2037;
           animation: refresh 0.3s ease-in-out;
         }
       }
@@ -47,7 +53,7 @@
       h1 {
         font-weight: 400;
         font-size: 2rem;
-        color: #212121;
+        color: #a3adc2;
         text-transform: uppercase;
       }
 
@@ -81,8 +87,8 @@
     .filters-others-container {
       display: flex;
       justify-content: space-around;
-      border-top: 1px solid #cacacc;
-      border-bottom: 1px solid #cacacc;
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
       padding: 1.5rem 0;
 
       div {
@@ -90,7 +96,7 @@
         h2 {
           font-weight: 400;
           font-size: 1.4rem;
-          color: #212121;
+          color: #a3adc2;
           text-transform: uppercase;
           margin-bottom: 5px;
         }
@@ -116,19 +122,21 @@
   }
 
   .button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     border: none;
-    height: 30px;
-    width: 200px;
-    font-size: 1rem;
+    height: 50px;
+    width: 100%;
+    font-size: 1.2rem;
     font-weight: 500;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
     text-transform: uppercase;
     cursor: pointer;
+    background-color: transparent;
+    color: #a3adc2;
 
     &:hover {
-      background-color: #e24b4b;
-      color: #fff;
+      background-color: #3f4a5d;
     }
 
     &:focus {

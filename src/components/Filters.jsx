@@ -86,7 +86,7 @@ export default function Filters({
           setOpenWrapper(!openWrapper);
         }}
       >
-        Show Filters
+        {openWrapper ? 'Hide Filters' : 'Show Filters'}
       </button>
     </div>
   );

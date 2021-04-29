@@ -29,6 +29,7 @@ const PokemonList = ({
   const handleList = (e) => {
     const choice = e.target.value;
 
+    setQuery('');
     setOffset(parseInt(choice.slice(0, choice.indexOf('-')), 10) - 1);
   };
 
