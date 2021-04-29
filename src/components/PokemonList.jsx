@@ -11,7 +11,7 @@ const PokemonList = ({
   weightFilters,
 }) => {
   const [pokemons, setPokemons] = useState([]);
-  const [query, setQuery] = useState('a');
+  const [query, setQuery] = useState('');
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
   };
