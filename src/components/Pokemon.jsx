@@ -125,15 +125,13 @@ const Pokemon = ({
       <li className={`pokemon ${infos.types[0].type.name}`}>
         {loading && <PokeSpinner />}
         {error && <p>error</p>}
-        {!loading && !error && (
+        {!loading && !error && infos.id && (
           <Link to={`/${infos.name}`}>
-            {infos.sprites.other['official-artwork'].front_default && (
-              <img
-                className="pokemon-image"
-                src={infos.sprites.other['official-artwork'].front_default}
-                alt="pokemon avatar"
-              />
-            )}
+            <img
+              className="pokemon-image"
+              src={infos.sprites.other['official-artwork'].front_default}
+              alt="pokemon avatar"
+            />
             <div className="pokemon-infos">
               <h2 className="pokemon-name">
                 {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
