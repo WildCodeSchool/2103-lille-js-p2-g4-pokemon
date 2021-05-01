@@ -43,50 +43,44 @@ const PokemonList = ({
 
   return (
     <>
-      {isLoading && (
-        <div className="list-loading">
-          <PokeSpinner />
-        </div>
-      )}
+      <input
+        type="text"
+        value={query}
+        onChange={handleQueryChange}
+        placeholder=" Search your Pokemon by name..."
+      />
+      <select name="list-choice" id="list-choice" onChange={handleList}>
+        <option value="0">1-99</option>
+        <option value="99">100-199</option>
+        <option value="199">200-299</option>
+        <option value="299">300-399</option>
+        <option value="399">400-499</option>
+        <option value="499">500-599</option>
+        <option value="599">600-699</option>
+        <option value="699">700-799</option>
+        <option value="799">800-898</option>
+      </select>
+      {isLoading && <PokeSpinner />}
       {!isLoading && error && <p>error</p>}
       {!isLoading && !error && (
-        <>
-          <input
-            type="text"
-            value={query}
-            onChange={handleQueryChange}
-            placeholder=" Search your Pokemon by name..."
-          />
-          <select name="list-choice" id="list-choice" onChange={handleList}>
-            <option value="0">1-99</option>
-            <option value="99">100-199</option>
-            <option value="199">200-299</option>
-            <option value="299">300-399</option>
-            <option value="399">400-499</option>
-            <option value="499">500-599</option>
-            <option value="599">600-699</option>
-            <option value="699">700-799</option>
-            <option value="799">800-898</option>
-          </select>
-          <ul className="pokemon-list">
-            {pokemons
-              .filter((pokemon) => {
-                return pokemon.name.toUpperCase().includes(query.toUpperCase());
-              })
-              .map((pokemon) => {
-                return (
-                  <Pokemon
-                    key={pokemon.name}
-                    url={pokemon.url}
-                    typesFilters={typesFilters}
-                    abilityFilters={abilityFilters}
-                    heightFilters={heightFilters}
-                    weightFilters={weightFilters}
-                  />
-                );
-              })}
-          </ul>
-        </>
+        <ul className="pokemon-list">
+          {pokemons
+            .filter((pokemon) => {
+              return pokemon.name.toUpperCase().includes(query.toUpperCase());
+            })
+            .map((pokemon) => {
+              return (
+                <Pokemon
+                  key={pokemon.name}
+                  url={pokemon.url}
+                  typesFilters={typesFilters}
+                  abilityFilters={abilityFilters}
+                  heightFilters={heightFilters}
+                  weightFilters={weightFilters}
+                />
+              );
+            })}
+        </ul>
       )}
     </>
   );
