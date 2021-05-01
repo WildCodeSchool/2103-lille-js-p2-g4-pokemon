@@ -27,8 +27,8 @@ const PokemonList = ({
   };
 
   const handleList = (e) => {
-    setQuery('');
     setOffset(e.target.value);
+    setQuery(query);
   };
 
   return (
