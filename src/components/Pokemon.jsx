@@ -121,33 +121,35 @@ const Pokemon = ({
   }, [typesFilters, abilityFilters, heightFilters, weightFilters]);
 
   return (
-    <li className={`pokemon ${infos.types[0].type.name}`}>
-      {loading && <PokeSpinner />}
-      {error && <p>error</p>}
-      {!loading && !error && display && (
-        <Link to={`/${infos.name}`}>
-          {infos.sprites.other['official-artwork'].front_default && (
-            <img
-              className="pokemon-image"
-              src={infos.sprites.other['official-artwork'].front_default}
-              alt="pokemon avatar"
-            />
-          )}
-          <div className="pokemon-infos">
-            <h2 className="pokemon-name">
-              {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-            </h2>
-            <p className="pokemon-id">{infos.id}</p>
-            <p className="pokemon-types">
-              {infos.types.map((element) => element.type.name).join(' - ')}
-            </p>
-          </div>
-          <div className="arrow-container">
-            <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
-          </div>
-        </Link>
-      )}
-    </li>
+    display && (
+      <li className={`pokemon ${infos.types[0].type.name}`}>
+        {loading && <PokeSpinner />}
+        {error && <p>error</p>}
+        {!loading && !error && (
+          <Link to={`/${infos.name}`}>
+            {infos.sprites.other['official-artwork'].front_default && (
+              <img
+                className="pokemon-image"
+                src={infos.sprites.other['official-artwork'].front_default}
+                alt="pokemon avatar"
+              />
+            )}
+            <div className="pokemon-infos">
+              <h2 className="pokemon-name">
+                {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
+              </h2>
+              <p className="pokemon-id">{infos.id}</p>
+              <p className="pokemon-types">
+                {infos.types.map((element) => element.type.name).join(' - ')}
+              </p>
+            </div>
+            <div className="arrow-container">
+              <img className="arrow" src="/img/arrow.svg" alt="right arrow" />
+            </div>
+          </Link>
+        )}
+      </li>
+    )
   );
 };
 
