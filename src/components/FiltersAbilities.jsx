@@ -24,8 +24,7 @@ export default function FiltersAbilities({ setAbilityFilters }) {
 
   return (
     <>
-      {isLoading && <div className="pokespinner" />}
-      {error && <div className="error" />}
+      {!isLoading && error && <p>error</p>}
       {!isLoading && !error && (
         <div className="select-ability">
           <h2>Ability</h2>

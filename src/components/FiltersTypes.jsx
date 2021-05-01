@@ -5,11 +5,11 @@ import './css/colorTypes.scss';
 
 export default function FiltersTypes({ setTypesFilters }) {
   const [types, setTypes] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     axios
       .get('https://pokeapi.co/api/v2/type')
       .then(({ data }) => {
@@ -23,7 +23,7 @@ export default function FiltersTypes({ setTypesFilters }) {
         setError(true);
       })
       .finally(() => {
-        setLoading(false);
+        setIsLoading(false);
       });
   }, []);
 
@@ -44,9 +44,8 @@ export default function FiltersTypes({ setTypesFilters }) {
 
   return (
     <>
-      {loading && <div className="pokespinner" />}
-      {error && <div className="error" />}
-      {!loading && !error && (
+      {!isLoading && error && <p>error</p>}
+      {!isLoading && !error && (
         <div className="types-container">
           <h1>Types</h1>
           <ul className="filters-types">
