@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import 'animate.css';
 import PokeSpinner from './PokeSpinner';
 import './css/Pokemon.scss';
 import './css/colorTypes.scss';
@@ -122,7 +123,9 @@ const Pokemon = ({
 
   return (
     display && (
-      <li className={`pokemon ${infos.types[0].type.name}`}>
+      <li
+        className={`pokemon ${infos.types[0].type.name} animate__animated animate__zoomIn`}
+      >
         {loading && <PokeSpinner />}
         {error && <p>error</p>}
         {!loading && !error && infos.id && (
