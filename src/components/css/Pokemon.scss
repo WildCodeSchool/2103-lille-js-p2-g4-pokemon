@@ -1,5 +1,7 @@
-.loading {
-  display: none;
+.spinner-card {
+  width: 230px;
+  height: 380px;
+  margin: 5px;
 }
 
 .pokemon {
@@ -12,7 +14,6 @@
   border-radius: 4px;
   padding: 1rem 0;
   margin: 5px;
-  list-style-type: none;
 
   &:hover {
     transform: scale(1.01);
