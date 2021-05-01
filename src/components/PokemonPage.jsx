@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import PokeSpinner from './PokeSpinner';
 import './css/PokemonPage.scss';
+import './css/searchbar.scss';
 
 const PokemonPage = () => {
   const { pokemonName } = useParams();
@@ -12,24 +13,23 @@ const PokemonPage = () => {
     abilities: [
       {
         ability: {
-          name: 'undefined',
+          name: '',
         },
       },
     ],
     sprites: {
       other: {
         'official-artwork': {
-          front_default:
-            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png',
+          front_default: '',
         },
       },
     },
     id: 0,
-    name: 'undefined',
+    name: '',
     types: [
       {
         type: {
-          name: 'undefined',
+          name: '',
         },
       },
     ],
@@ -52,8 +52,14 @@ const PokemonPage = () => {
 
   return (
     <div className="pokemonPage">
+      <span className="header-bottom" />
+      <input
+        type="text"
+        className="searchbar"
+        placeholder=" Search your Pokemon by name or ID..."
+      />
       {isLoading && <PokeSpinner />}
-      {!isLoading && error && <p>error</p>}
+      {!isLoading && error && <p>¯\_(ツ)_/¯</p>}
       {!isLoading && !error && (
         <div className="pokedex">
           <div className="pokeWeak">

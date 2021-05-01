@@ -6,27 +6,6 @@
   list-style-type: none;
 }
 
-input {
-  width: 400px;
-  height: 40px;
-  border-radius: 15px;
-  border: 5px solid #000;
-  position: fixed;
-  top: 47px;
-  left: 50%;
-  transform: translatex(-50%);
-  padding-left: 1rem;
-  z-index: 1;
-
-  &::placeholder {
-    color: #696969;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
 #list-choice {
   width: 100px;
   height: 30px;
@@ -37,8 +16,7 @@ input {
   border: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 600;
   font-size: 1rem;
-  padding-left: 10px;
-  margin: 5rem 0 0 2rem;
+  margin-left: 30px;
   cursor: pointer;
 
   &:hover {

@@ -1,7 +1,17 @@
 .pokemonPage {
-  margin-left: 10vw;
   width: 100%;
-  min-width: 700px;
+  padding-top: 50px;
+
+  .header-bottom {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: #343d4e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 2px #343d4e;
+  }
 
   .pokedex {
     display: flex;

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Pokemon from './Pokemon';
 import PokeSpinner from './PokeSpinner';
 import './css/PokemonList.scss';
+import './css/searchbar.scss';
 
 const PokemonList = ({
   typesFilters,
@@ -45,6 +46,7 @@ const PokemonList = ({
     <>
       <input
         type="text"
+        className="searchbar"
         value={query}
         onChange={handleQueryChange}
         placeholder=" Search your Pokemon by name..."
