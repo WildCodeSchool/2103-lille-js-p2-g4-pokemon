@@ -146,9 +146,7 @@ const Pokemon = ({
                 alt="pokemon avatar"
               />
               <div className="pokemon-infos">
-                <h2 className="pokemon-name">
-                  {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-                </h2>
+                <h2 className="pokemon-name">{infos.name}</h2>
                 <p className="pokemon-id">{infos.id}</p>
                 <p className="pokemon-types">
                   {infos.types.map((element) => element.type.name).join(' - ')}

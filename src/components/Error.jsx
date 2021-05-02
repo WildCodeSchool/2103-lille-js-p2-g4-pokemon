@@ -21,6 +21,6 @@ Error.propTypes = {
 };
 
 Error.defaultProps = {
-  kaomoji: '',
+  kaomoji: '( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )',
   msg: 'error',
 };

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Pokemon from './Pokemon';
 import PokeSpinner from './PokeSpinner';
+import Error from './Error';
 import './css/PokemonList.scss';
 import './css/searchbar.scss';
 
@@ -12,6 +14,7 @@ const PokemonList = ({
   heightFilters,
   weightFilters,
 }) => {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [pokemons, setPokemons] = useState([]);
@@ -49,6 +52,11 @@ const PokemonList = ({
         className="searchbar"
         value={query}
         onChange={handleQueryChange}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            history.push(`/name/${query}`);
+          }
+        }}
         placeholder=" Search your Pokemon by name..."
       />
       <select name="list-choice" id="list-choice" onChange={handleOffset}>
@@ -63,7 +71,9 @@ const PokemonList = ({
         <option value="799">800-898</option>
       </select>
       {isLoading && <PokeSpinner />}
-      {!isLoading && error && <p>error</p>}
+      {!isLoading && error && (
+        <Error kaomoji="( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )" msg="Pokemons not found" />
+      )}
       {!isLoading && !error && (
         <ul className="pokemon-list">
           {pokemons

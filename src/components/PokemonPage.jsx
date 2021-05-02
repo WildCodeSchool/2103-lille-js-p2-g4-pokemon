@@ -103,7 +103,9 @@ const PokemonPage = () => {
                 <h2>
                   {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
                 </h2>
-                <h3>{infos.types[0].type.name}</h3>
+                <h3>
+                  {infos.types.map((element) => element.type.name).join(' - ')}
+                </h3>
               </div>
             </div>
             <div className="weaknesses">
