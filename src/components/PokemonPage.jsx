@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import PokeSpinner from './PokeSpinner';
+import Error from './Error';
 import './css/PokemonPage.scss';
 import './css/searchbar.scss';
 
@@ -87,10 +88,7 @@ const PokemonPage = () => {
       </form>
       {isLoading && <PokeSpinner />}
       {!isLoading && error && (
-        <div className="error-pokemonpage">
-          <p className="error-kaomoji">( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )</p>
-          <p className="error-descr">Pokemon not found</p>
-        </div>
+        <Error kaomoji="( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )" msg="Pokemon not found" />
       )}
       {!isLoading && !error && (
         <div className="pokedex">
