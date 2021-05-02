@@ -134,7 +134,7 @@ const Pokemon = ({
           <li
             className={`pokemon ${infos.types[0].type.name} animate__animated animate__zoomIn`}
           >
-            <Link to={`/${infos.name}`}>
+            <Link to={`/name/${infos.name}`}>
               <img
                 className="pokemon-image"
                 src={infos.sprites.other['official-artwork'].front_default}

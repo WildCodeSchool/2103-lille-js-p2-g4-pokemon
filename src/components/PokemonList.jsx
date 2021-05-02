@@ -37,7 +37,7 @@ const PokemonList = ({
     setQuery(e.target.value);
   };
 
-  const handleList = (e) => {
+  const handleOffset = (e) => {
     setOffset(e.target.value);
     setQuery(query);
   };
@@ -51,7 +51,7 @@ const PokemonList = ({
         onChange={handleQueryChange}
         placeholder=" Search your Pokemon by name..."
       />
-      <select name="list-choice" id="list-choice" onChange={handleList}>
+      <select name="list-choice" id="list-choice" onChange={handleOffset}>
         <option value="0">1-99</option>
         <option value="99">100-199</option>
         <option value="199">200-299</option>

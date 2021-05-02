@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import PokeSpinner from './PokeSpinner';
 import './css/PokemonPage.scss';
 import './css/searchbar.scss';
 
 const PokemonPage = () => {
-  const { pokemonName } = useParams();
+  const { pokemon } = useParams();
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [infos, setinfos] = useState({
@@ -37,10 +38,12 @@ const PokemonPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setError(false);
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then(({ data }) => {
         setinfos(data);
+        document.querySelector('.searchbar').value = '';
       })
       .catch(() => {
         setError(true);
@@ -48,18 +51,47 @@ const PokemonPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [pokemon]);
+
+  const isNumeric = (str) => {
+    for (let i = 0; i < str.length; i += 1) {
+      if (!parseInt(str[i], 10)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const query = e.target.querySelector('.searchbar').value;
+
+    if (query) {
+      if (isNumeric(query)) {
+        history.push(`/id/${query}`);
+      } else {
+        history.push(`/name/${query}`);
+      }
+    }
+  };
 
   return (
     <div className="pokemonPage">
       <span className="header-bottom" />
-      <input
-        type="text"
-        className="searchbar"
-        placeholder=" Search your Pokemon by name or ID..."
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="searchbar"
+          placeholder=" Search your Pokemon by name or ID..."
+        />
+      </form>
       {isLoading && <PokeSpinner />}
-      {!isLoading && error && <p>¯\_(ツ)_/¯</p>}
+      {!isLoading && error && (
+        <div className="error-pokemonpage">
+          <p className="error-kaomoji">( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )</p>
+          <p className="error-descr">Pokemon not found</p>
+        </div>
+      )}
       {!isLoading && !error && (
         <div className="pokedex">
           <div className="pokeWeak">
