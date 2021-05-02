@@ -4,6 +4,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import 'animate.css';
 import PokeSpinner from './PokeSpinner';
+import Error from './Error';
 import './css/Pokemon.scss';
 import './css/colorTypes.scss';
 
@@ -125,11 +126,15 @@ const Pokemon = ({
     display && (
       <>
         {loading && (
-          <li className="spinner-card">
+          <li className="spinner-error-card">
             <PokeSpinner />
           </li>
         )}
-        {error && <p>error</p>}
+        {!loading && error && (
+          <li className="spinner-error-card">
+            <Error kaomoji="( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )" msg="Pokemon not found" />
+          </li>
+        )}
         {!loading && !error && infos.id && (
           <li
             className={`pokemon ${infos.types[0].type.name} animate__animated animate__zoomIn`}

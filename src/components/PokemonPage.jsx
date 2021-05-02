@@ -56,7 +56,7 @@ const PokemonPage = () => {
 
   const isNumeric = (str) => {
     for (let i = 0; i < str.length; i += 1) {
-      if (!parseInt(str[i], 10)) {
+      if (str[i] !== '0' && !parseInt(str[i], 10)) {
         return false;
       }
     }
