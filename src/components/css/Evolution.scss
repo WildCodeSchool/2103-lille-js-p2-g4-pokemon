@@ -1,0 +1,26 @@
+.Evolution {
+  text-align: center;
+  width: 150px;
+  margin: 0 20px;
+
+  &:hover {
+    transform: translate(1px, 1px);
+  }
+
+  a {
+    text-decoration: none;
+
+    .evolution-image {
+      border: 4px solid #a9a9a9;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 22px;
+      color: #a9a9a9;
+    }
+  }
+}

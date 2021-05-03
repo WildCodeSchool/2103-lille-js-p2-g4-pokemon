@@ -17,7 +17,7 @@ const Pokemon = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [infos, setinfos] = useState({
+  const [infos, setInfos] = useState({
     abilities: [
       {
         ability: {
@@ -56,7 +56,7 @@ const Pokemon = ({
           minimumIntegerDigits: 3,
           useGrouping: false,
         })}`;
-        setinfos(newData);
+        setInfos(newData);
       })
       .catch(() => {
         setError(true);
