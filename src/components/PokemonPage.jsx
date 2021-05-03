@@ -1,35 +1,37 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import PokeSpinner from './PokeSpinner';
+import Error from './Error';
 import './css/PokemonPage.scss';
+import './css/searchbar.scss';
 
 const PokemonPage = () => {
-  const { pokemonName } = useParams();
+  const { pokemon } = useParams();
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [infos, setinfos] = useState({
     abilities: [
       {
         ability: {
-          name: 'undefined',
+          name: '',
         },
       },
     ],
     sprites: {
       other: {
         'official-artwork': {
-          front_default:
-            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png',
+          front_default: '',
         },
       },
     },
     id: 0,
-    name: 'undefined',
+    name: '',
     types: [
       {
         type: {
-          name: 'undefined',
+          name: '',
         },
       },
     ],
@@ -37,10 +39,12 @@ const PokemonPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setError(false);
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then(({ data }) => {
         setinfos(data);
+        document.querySelector('.searchbar').value = '';
       })
       .catch(() => {
         setError(true);
@@ -48,12 +52,44 @@ const PokemonPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [pokemon]);
+
+  const isNumeric = (str) => {
+    for (let i = 0; i < str.length; i += 1) {
+      if (str[i] !== '0' && !parseInt(str[i], 10)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const query = e.target.querySelector('.searchbar').value;
+
+    if (query) {
+      if (isNumeric(query)) {
+        history.push(`/id/${query}`);
+      } else {
+        history.push(`/name/${query}`);
+      }
+    }
+  };
 
   return (
     <div className="pokemonPage">
+      <span className="header-bottom" />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="searchbar"
+          placeholder=" Search your Pokemon by name or ID..."
+        />
+      </form>
       {isLoading && <PokeSpinner />}
-      {!isLoading && error && <p>error</p>}
+      {!isLoading && error && (
+        <Error kaomoji="( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )" msg="Pokemon not found" />
+      )}
       {!isLoading && !error && (
         <div className="pokedex">
           <div className="pokeWeak">
@@ -67,7 +103,9 @@ const PokemonPage = () => {
                 <h2>
                   {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
                 </h2>
-                <h3>{infos.types[0].type.name}</h3>
+                <h3>
+                  {infos.types.map((element) => element.type.name).join(' - ')}
+                </h3>
               </div>
             </div>
             <div className="weaknesses">

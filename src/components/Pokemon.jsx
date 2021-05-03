@@ -4,6 +4,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import 'animate.css';
 import PokeSpinner from './PokeSpinner';
+import Error from './Error';
 import './css/Pokemon.scss';
 import './css/colorTypes.scss';
 
@@ -125,25 +126,27 @@ const Pokemon = ({
     display && (
       <>
         {loading && (
-          <li className="spinner-card">
+          <li className="spinner-error-card">
             <PokeSpinner />
           </li>
         )}
-        {error && <p>error</p>}
+        {!loading && error && (
+          <li className="spinner-error-card">
+            <Error kaomoji="( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )" msg="Pokemon not found" />
+          </li>
+        )}
         {!loading && !error && infos.id && (
           <li
             className={`pokemon ${infos.types[0].type.name} animate__animated animate__zoomIn`}
           >
-            <Link to={`/${infos.name}`}>
+            <Link to={`/name/${infos.name}`}>
               <img
                 className="pokemon-image"
                 src={infos.sprites.other['official-artwork'].front_default}
                 alt="pokemon avatar"
               />
               <div className="pokemon-infos">
-                <h2 className="pokemon-name">
-                  {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-                </h2>
+                <h2 className="pokemon-name">{infos.name}</h2>
                 <p className="pokemon-id">{infos.id}</p>
                 <p className="pokemon-types">
                   {infos.types.map((element) => element.type.name).join(' - ')}
