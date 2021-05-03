@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import PokeSpinner from './PokeSpinner';
 import Error from './Error';
+import Weaknesses from './Weaknesses';
 import './css/PokemonPage.scss';
 import './css/searchbar.scss';
 
@@ -32,6 +33,7 @@ const PokemonPage = () => {
       {
         type: {
           name: '',
+          url: '',
         },
       },
     ],
@@ -108,9 +110,12 @@ const PokemonPage = () => {
                 </h3>
               </div>
             </div>
-            <div className="weaknesses">
-              <h4>Weaknesses</h4>
-            </div>
+            {infos.types[0].type.url && (
+              <div className="weaknesses">
+                <h4>Weaknesses</h4>
+                <Weaknesses url={infos.types[0].type.url} />
+              </div>
+            )}
           </div>
           <div className="pokeStats">
             <ul>
