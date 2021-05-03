@@ -15,11 +15,6 @@ Error.propTypes = {
   msg: PropTypes.string,
 };
 
-Error.propTypes = {
-  kaomoji: PropTypes.string,
-  msg: PropTypes.string,
-};
-
 Error.defaultProps = {
   kaomoji: '( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )',
   msg: 'error',
