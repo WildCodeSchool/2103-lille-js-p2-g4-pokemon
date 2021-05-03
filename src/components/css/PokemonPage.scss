@@ -15,50 +15,67 @@
 
   .pokedex {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 
-    .pokeWeak {
+    h4 {
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 30px;
+      color: #a9a9a9;
+    }
+
+    .pokedex-infos {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
 
-      .basicsInfos {
-        margin: 5px;
+      .pokeWeak {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        img {
-          width: 350px;
-          box-sizing: border-box;
-        }
-        .nameNumber {
-          font-size: 2em;
-          text-transform: capitalize;
+        flex-direction: column;
+        justify-content: space-between;
 
-          h1 {
-            color: grey;
+        .basicsInfos {
+          margin: 5px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          img {
+            width: 350px;
+            box-sizing: border-box;
+          }
+          .nameNumber {
+            font-size: 2em;
+            text-transform: capitalize;
+
+            h1 {
+              color: grey;
+            }
+          }
+        }
+      }
+
+      .pokeStats {
+        padding: 10px;
+        text-transform: capitalize;
+
+        ul {
+          font-size: 1.2em;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%;
+          padding: 20px 10px;
+          background-color: #ededed;
+          li {
+            margin: 10px 0px;
+            list-style-type: none;
           }
         }
       }
     }
 
-    .pokeStats {
-      padding: 10px;
-      text-transform: capitalize;
-
-      ul {
-        font-size: 1.2em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%;
-        padding: 20px 10px;
-        background-color: #ededed;
-        li {
-          margin: 10px 0px;
-          list-style-type: none;
-        }
-      }
+    .poke-evolutions {
+      text-align: center;
+      margin-top: 50px;
     }
   }
 
