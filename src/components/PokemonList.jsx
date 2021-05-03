@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Pokemon from './Pokemon';
+import PokeSpinner from './PokeSpinner';
 import './css/PokemonList.scss';
 
 const PokemonList = ({
@@ -10,15 +11,24 @@ const PokemonList = ({
   heightFilters,
   weightFilters,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [pokemons, setPokemons] = useState([]);
   const [query, setQuery] = useState('');
   const [offset, setOffset] = useState('0');
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=${offset}`)
       .then(({ data }) => {
         setPokemons(data.results);
+      })
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [offset]);
 
@@ -27,8 +37,8 @@ const PokemonList = ({
   };
 
   const handleList = (e) => {
-    setQuery('');
     setOffset(e.target.value);
+    setQuery(query);
   };
 
   return (
@@ -50,24 +60,28 @@ const PokemonList = ({
         <option value="699">700-799</option>
         <option value="799">800-898</option>
       </select>
-      <ul className="pokemon-list">
-        {pokemons
-          .filter((pokemon) => {
-            return pokemon.name.toUpperCase().includes(query.toUpperCase());
-          })
-          .map((pokemon) => {
-            return (
-              <Pokemon
-                key={pokemon.name}
-                url={pokemon.url}
-                typesFilters={typesFilters}
-                abilityFilters={abilityFilters}
-                heightFilters={heightFilters}
-                weightFilters={weightFilters}
-              />
-            );
-          })}
-      </ul>
+      {isLoading && <PokeSpinner />}
+      {!isLoading && error && <p>error</p>}
+      {!isLoading && !error && (
+        <ul className="pokemon-list">
+          {pokemons
+            .filter((pokemon) => {
+              return pokemon.name.toUpperCase().includes(query.toUpperCase());
+            })
+            .map((pokemon) => {
+              return (
+                <Pokemon
+                  key={pokemon.name}
+                  url={pokemon.url}
+                  typesFilters={typesFilters}
+                  abilityFilters={abilityFilters}
+                  heightFilters={heightFilters}
+                  weightFilters={weightFilters}
+                />
+              );
+            })}
+        </ul>
+      )}
     </>
   );
 };
