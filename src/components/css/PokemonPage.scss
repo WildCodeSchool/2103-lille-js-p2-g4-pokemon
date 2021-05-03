@@ -1,6 +1,8 @@
 .pokemonPage {
-  width: 100%;
-  padding-top: 50px;
+  width: 50vw;
+  margin: 50px;
+  border-radius: 15px;
+  background-color: #343d4e;
 
   .header-bottom {
     position: fixed;
@@ -14,7 +16,10 @@
   }
 
   .pokedex {
+    padding: 10px;
     display: flex;
+    border: #343d4e 5px;
+    border-radius: 15px;
     justify-content: space-between;
 
     .pokeWeak {
@@ -34,17 +39,22 @@
         .nameNumber {
           font-size: 2em;
           text-transform: capitalize;
-
           h1 {
-            color: grey;
+            color: white;
+          }
+          h2 {
+            color: #bdb9b8;
+          }
+          h3 {
+            color: #bdb9b8;
           }
         }
       }
     }
 
     .pokeStats {
-      padding: 10px;
       text-transform: capitalize;
+      border-radius: 15px;
 
       ul {
         font-size: 1.2em;
@@ -52,8 +62,11 @@
         flex-direction: column;
         justify-content: center;
         height: 100%;
-        padding: 20px 10px;
-        background-color: #ededed;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 15px;
+        color: white;
+        background-color: rgba(32, 32, 32, 0.3);
         li {
           margin: 10px 0px;
           list-style-type: none;
@@ -66,6 +79,12 @@
     text-align: center;
     font-size: 200%;
     margin: 5px;
+    padding: 10px;
     height: 30%;
+    background-color: rgba(32, 32, 32, 0.3);
+    border-radius: 15px;
+    h4 {
+      color: white;
+    }
   }
 }
