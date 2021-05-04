@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import Weaknesses from './Weaknesses';
+import Evolutions from './Evolutions';
 import PokeSpinner from './PokeSpinner';
 import Error from './Error';
-import Weaknesses from './Weaknesses';
 import './css/PokemonPage.scss';
 import './css/searchbar.scss';
 
@@ -20,6 +21,9 @@ const PokemonPage = () => {
         },
       },
     ],
+    species: {
+      url: '',
+    },
     sprites: {
       other: {
         'official-artwork': {
@@ -94,44 +98,52 @@ const PokemonPage = () => {
       )}
       {!isLoading && !error && (
         <div className="pokedex">
-          <div className="pokeWeak">
-            <div className="basicsInfos">
-              <img
-                src={infos.sprites.other['official-artwork'].front_default}
-                alt=""
-              />
-              <div className="nameNumber">
-                <h1>#{infos.id}</h1>
-                <h2>
-                  {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
-                </h2>
-                <h3>
-                  {infos.types.map((element) => element.type.name).join(' - ')}
-                </h3>
+          <div className="pokedex-infos">
+            <div className="pokeWeak">
+              <div className="basicsInfos">
+                <img
+                  src={infos.sprites.other['official-artwork'].front_default}
+                  alt=""
+                />
+                <div className="nameNumber">
+                  <h1>#{infos.id}</h1>
+                  <h2>
+                    {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
+                  </h2>
+                  <h3>
+                    {infos.types
+                      .map((element) => element.type.name)
+                      .join(' - ')}
+                  </h3>
+                </div>
               </div>
-            </div>
-            {infos.types[0].type.url && (
               <div className="weaknesses">
                 <h4>Weaknesses</h4>
-                <Weaknesses url={infos.types[0].type.url} />
+                {infos.types[0].type.url && (
+                  <Weaknesses url={infos.types[0].type.url} />
+                )}
               </div>
-            )}
+            </div>
+            <div className="pokeStats">
+              <ul>
+                <li>WEIGHT: {infos.weight} lbs</li>
+                <li>HEIGHT: {infos.height} cm</li>
+                <li>e: </li>
+                <li>XP: {infos.base_experience} pts</li>
+                <li>
+                  ABILITIES:
+                  <p>
+                    {infos.abilities
+                      .map((element) => element.ability.name)
+                      .join(' - ')}
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="pokeStats">
-            <ul>
-              <li>WEIGHT: {infos.weight} lbs</li>
-              <li>HEIGHT: {infos.height} cm</li>
-              <li>e: </li>
-              <li>XP: {infos.base_experience} pts</li>
-              <li>
-                ABILITIES:
-                <p>
-                  {infos.abilities
-                    .map((element) => element.ability.name)
-                    .join(' - ')}
-                </p>
-              </li>
-            </ul>
+          <div className="poke-evolutions">
+            <h4>Evolutions</h4>
+            {infos.species.url && <Evolutions url={infos.species.url} />}
           </div>
         </div>
       )}
