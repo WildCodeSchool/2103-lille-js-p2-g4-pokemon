@@ -82,6 +82,14 @@ const PokemonPage = () => {
     }
   };
 
+  const handleEventNext = () => {
+    history.push(`/id/${infos.id + 1}`);
+  };
+
+  const handleEventPrevious = () => {
+    history.push(`/id/${infos.id - 1}`);
+  };
+
   return (
     <div className="pokemonPage">
       <span className="header-bottom" />
@@ -118,6 +126,12 @@ const PokemonPage = () => {
                 </div>
               </div>
               <div className="weaknesses">
+                <button type="button" onClick={handleEventPrevious}>
+                  Previous
+                </button>
+                <button type="button" onClick={handleEventNext}>
+                  Next
+                </button>
                 <h4>Weaknesses</h4>
                 {infos.types[0].type.url && (
                   <Weaknesses url={infos.types[0].type.url} />
