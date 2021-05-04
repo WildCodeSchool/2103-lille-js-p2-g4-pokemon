@@ -35,15 +35,30 @@ export default function Filters({
   return (
     <div className="Filters">
       <div className={`filter-wrapper ${openWrapper && 'open'}`}>
-        <button
-          type="button"
-          className="button-types-refresh"
-          onClick={resetFilters}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-          </svg>
-        </button>
+        <div className="buttons-container">
+          <button
+            type="button"
+            className="button-filters-refresh"
+            onClick={resetFilters}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M14 12c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-2-9c-4.97 0-9 4.03-9 9H0l4 4 4-4H5c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.51 0-2.91-.49-4.06-1.3l-1.42 1.44C8.04 20.3 9.94 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="button-filters-hide"
+            onClick={() => {
+              setOpenWrapper(!openWrapper);
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+            </svg>
+          </button>
+        </div>
         <FiltersTypes setTypesFilters={setTypesFilters} />
         <div className="filters-others-container">
           <FiltersAbilities setAbilityFilters={setAbilityFilters} />
@@ -86,7 +101,7 @@ export default function Filters({
           setOpenWrapper(!openWrapper);
         }}
       >
-        {openWrapper ? 'Hide Filters' : 'Show Filters'}
+        {openWrapper ? 'Hide Filters ▲' : 'Show Filters ▼'}
       </button>
     </div>
   );
