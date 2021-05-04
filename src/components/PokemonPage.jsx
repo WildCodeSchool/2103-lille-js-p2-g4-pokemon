@@ -106,6 +106,22 @@ const PokemonPage = () => {
       )}
       {!isLoading && !error && (
         <div className="pokedex">
+          <div className="buttons">
+            <button
+              className="buttonPrevious"
+              type="button"
+              onClick={handleEventPrevious}
+            >
+              &laquo;Previous
+            </button>
+            <button
+              className="buttonNext"
+              type="button"
+              onClick={handleEventNext}
+            >
+              Next&raquo;
+            </button>
+          </div>
           <div className="pokedex-infos">
             <div className="pokeWeak">
               <div className="basicsInfos">
@@ -126,12 +142,6 @@ const PokemonPage = () => {
                 </div>
               </div>
               <div className="weaknesses">
-                <button type="button" onClick={handleEventPrevious}>
-                  Previous
-                </button>
-                <button type="button" onClick={handleEventNext}>
-                  Next
-                </button>
                 <h4>Weaknesses</h4>
                 {infos.types[0].type.url && (
                   <Weaknesses url={infos.types[0].type.url} />

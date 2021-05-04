@@ -85,4 +85,29 @@
     margin: 5px;
     height: 30%;
   }
+
+  .buttonPrevious {
+    align-items: center;
+    width: 120px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .buttonNext {
+    align-items: center;
+    width: 120px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+    margin-left: 15vw;
+  }
 }
