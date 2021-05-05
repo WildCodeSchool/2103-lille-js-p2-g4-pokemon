@@ -1,7 +1,5 @@
 .Evolution {
   text-align: center;
-  width: 150px;
-  margin: 0 20px;
 
   &:hover {
     transform: translate(1px, 1px);
@@ -22,5 +20,12 @@
       font-size: 22px;
       color: #a9a9a9;
     }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .evolution-image {
+    width: 100px;
+    height: 100px;
   }
 }

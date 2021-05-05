@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import 'animate.css';
 import Weaknesses from './Weaknesses';
 import Evolutions from './Evolutions';
 import PokeSpinner from './PokeSpinner';
@@ -98,7 +99,7 @@ const PokemonPage = () => {
       )}
       {!isLoading && !error && (
         <>
-          <div className="nameNumber">
+          <div className="nameNumber animate__animated animate__bounceInLeft">
             <div className="pokeImg">
               <img
                 src={infos.sprites.other['official-artwork'].front_default}
@@ -115,7 +116,7 @@ const PokemonPage = () => {
               </h3>
             </div>
           </div>
-          <div className="pokeStats">
+          <div className="pokeStats animate__animated animate__bounceInRight">
             <h4>Statistics</h4>
             <ul>
               <li>
@@ -155,13 +156,13 @@ const PokemonPage = () => {
               </li>
             </ul>
           </div>
-          <div className="weaknesses">
+          <div className="weaknesses animate__animated animate__bounceInLeft">
             <h4>Weaknesses</h4>
             {infos.types[0].type.url && (
               <Weaknesses url={infos.types[0].type.url} />
             )}
           </div>
-          <div className="poke-evolutions">
+          <div className="poke-evolutions animate__animated animate__bounceInRight">
             <h4>Evolutions</h4>
             {infos.species.url && <Evolutions url={infos.species.url} />}
           </div>
