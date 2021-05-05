@@ -167,3 +167,16 @@
     transform: rotate(-360deg);
   }
 }
+
+@media screen and (max-width: 800px) {
+  .Filters {
+    padding-top: 10px;
+    overflow: scroll;
+
+    .filter-wrapper {
+      .filters-others-container {
+        flex-direction: column;
+      }
+    }
+  }
+}
