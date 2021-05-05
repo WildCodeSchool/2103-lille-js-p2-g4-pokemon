@@ -90,26 +90,26 @@
     position: fixed;
     left: 0%;
     align-items: center;
-    width: 76px;
+    width: 80px;
     height: 475px;
     font-weight: 600;
-    font-size: 3rem;
+    font-size: 2rem;
     cursor: pointer;
     border: solid 2px black;
     background-color: #a9a9a9;
     border-top-right-radius: 80px 80px;
     border-bottom-right-radius: 80px 80px;
-    transition: transform 0.2s;
+    transition: transform 0.1;
   }
 
   .buttonNext {
     position: fixed;
     right: 0%;
     align-items: center;
-    width: 76px;
+    width: 80px;
     height: 475px;
     font-weight: 600;
-    font-size: 3rem;
+    font-size: 2rem;
     cursor: pointer;
     border: solid 2px black;
     background-color: #ad2037;
