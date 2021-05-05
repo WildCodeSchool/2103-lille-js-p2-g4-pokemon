@@ -121,8 +121,6 @@ const PokemonPage = () => {
               onClick={handleEventPrevious}
             >
               #{infos.id === 1 ? '898' : infos.id - 1}
-              {/* {infos.id === 898 && '1'} */}
-              {/* {infos.id === 1 ? '898' : infos.id === 898 ? '1' : infos.id - 1} */}
             </button>
 
             <div className="pokeWeak">
