@@ -1,0 +1,25 @@
+.Header {
+  height: 70px;
+  width: 100vw;
+  background-color: #ad2037;
+  border-bottom: 5px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  img {
+    width: 40px;
+    margin: 10px;
+    border: white solid 2px;
+    border-radius: 15px;
+    filter: grayscale(1);
+  }
+
+  .divEmpty {
+    width: 130px;
+    margin: 10px;
+  }
+}

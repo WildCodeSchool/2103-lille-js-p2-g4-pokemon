@@ -1,0 +1,29 @@
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  list-style-type: none;
+}
+
+#list-choice {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  text-align-last: center;
+  background-color: #343d4e;
+  color: #a3adc2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3f4a5d;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
