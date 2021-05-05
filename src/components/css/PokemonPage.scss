@@ -16,6 +16,7 @@
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   transform: translate(0, 33%);
+  animation-duration: 0.5s;
 }
 
 .buttonNext {
@@ -36,6 +37,7 @@
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   transform: translate(0, 33%);
+  animation-duration: 0.5s;
 }
 
 .buttonPrevious:hover {
