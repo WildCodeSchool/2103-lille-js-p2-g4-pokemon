@@ -83,11 +83,19 @@ const PokemonPage = () => {
   };
 
   const handleEventNext = () => {
-    history.push(`/id/${infos.id + 1}`);
+    if (infos.id >= 898) {
+      history.push(`/id/1`);
+    } else {
+      history.push(`/id/${infos.id + 1}`);
+    }
   };
 
   const handleEventPrevious = () => {
-    history.push(`/id/${infos.id - 1}`);
+    if (infos.id <= 1) {
+      history.push(`/id/898`);
+    } else {
+      history.push(`/id/${infos.id - 1}`);
+    }
   };
 
   return (
@@ -106,23 +114,17 @@ const PokemonPage = () => {
       )}
       {!isLoading && !error && (
         <div className="pokedex">
-          <div className="buttons">
+          <div className="pokedex-infos">
             <button
               className="buttonPrevious"
               type="button"
               onClick={handleEventPrevious}
             >
-              &laquo;Previous
+              #{infos.id === 1 ? '898' : infos.id - 1}
+              {/* {infos.id === 898 && '1'} */}
+              {/* {infos.id === 1 ? '898' : infos.id === 898 ? '1' : infos.id - 1} */}
             </button>
-            <button
-              className="buttonNext"
-              type="button"
-              onClick={handleEventNext}
-            >
-              Next&raquo;
-            </button>
-          </div>
-          <div className="pokedex-infos">
+
             <div className="pokeWeak">
               <div className="basicsInfos">
                 <img
@@ -164,6 +166,13 @@ const PokemonPage = () => {
                 </li>
               </ul>
             </div>
+            <button
+              className="buttonNext"
+              type="button"
+              onClick={handleEventNext}
+            >
+              #{infos.id === 898 ? '1' : infos.id + 1}
+            </button>
           </div>
           <div className="poke-evolutions">
             <h4>Evolutions</h4>
