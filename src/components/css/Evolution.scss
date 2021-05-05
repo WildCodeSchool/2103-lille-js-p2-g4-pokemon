@@ -29,3 +29,10 @@
     margin: 35px 10px;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .evolution-image {
+    width: 100px;
+    height: 100px;
+  }
+}

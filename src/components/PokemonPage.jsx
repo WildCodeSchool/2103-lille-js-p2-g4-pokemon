@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import 'animate.css';
 import Weaknesses from './Weaknesses';
 import Evolutions from './Evolutions';
 import PokeSpinner from './PokeSpinner';
@@ -99,18 +100,7 @@ const PokemonPage = () => {
   };
 
   return (
-    <div>
-      <button
-        className="buttonPrevious"
-        type="button"
-        onClick={handleEventPrevious}
-      >
-        #{infos.id === 1 ? '898' : infos.id - 1}
-      </button>
-
-      <button className="buttonNext" type="button" onClick={handleEventNext}>
-        #{infos.id === 898 ? '1' : infos.id + 1}
-      </button>
+    <>
       <div className="pokemonPage">
         <span className="header-bottom" />
         <form onSubmit={handleSubmit}>
@@ -126,6 +116,21 @@ const PokemonPage = () => {
         )}
         {!isLoading && !error && (
           <>
+            <button
+              className="buttonPrevious"
+              type="button"
+              onClick={handleEventPrevious}
+            >
+              #{infos.id === 1 ? '898' : infos.id - 1}
+            </button>
+
+            <button
+              className="buttonNext"
+              type="button"
+              onClick={handleEventNext}
+            >
+              #{infos.id === 898 ? '1' : infos.id + 1}
+            </button>
             <div className="nameNumber">
               <div className="pokeImg">
                 <img
@@ -133,7 +138,7 @@ const PokemonPage = () => {
                   alt=""
                 />
               </div>
-              <div className="pokeName">
+              <div className={`pokeName ${infos.types[0].type.name}`}>
                 <h1>#{infos.id}</h1>
                 <h2>
                   {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
@@ -192,7 +197,7 @@ const PokemonPage = () => {
           </>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
