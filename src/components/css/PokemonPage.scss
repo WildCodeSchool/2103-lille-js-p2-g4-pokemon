@@ -2,15 +2,19 @@
   position: fixed;
   left: 0%;
   align-items: center;
-  width: 80px;
+  width: 110px;
   height: 475px;
   font-weight: 600;
   font-size: 2rem;
   cursor: pointer;
-  border: solid 2px black;
+  color: white;
+  text-shadow: black 3px 3px;
+  border-top: solid 5px black;
+  border-bottom: solid 5px black;
+  border-right: solid 5px black;
   background-color: #a9a9a9;
-  border-top-right-radius: 80px 80px;
-  border-bottom-right-radius: 80px 80px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
   transform: translate(0, 33%);
 }
 
@@ -18,20 +22,24 @@
   position: fixed;
   right: 0%;
   align-items: center;
-  width: 80px;
+  width: 110px;
   height: 475px;
   font-weight: 600;
   font-size: 2rem;
   cursor: pointer;
-  border: solid 2px black;
+  color: white;
+  text-shadow: black 3px 3px;
+  border-top: solid 5px black;
+  border-bottom: solid 5px black;
+  border-left: solid 5px black;
   background-color: #ad2037;
-  border-top-left-radius: 80px 80px;
-  border-bottom-left-radius: 80px 80px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   transform: translate(0, 33%);
 }
 
 .buttonPrevious:hover {
-  opacity: 0.75;
+  opacity: 0.1;
 }
 
 .buttonNext:hover {
@@ -43,6 +51,7 @@
   margin: 50px;
   padding: 10px 15px;
   border-radius: 15px;
+  min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
   background-color: #343d4e;
@@ -80,7 +89,7 @@
   .pokeName {
     width: 40%;
     margin-left: 10%;
-    font-size: 200%;
+    font-size: 150%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,6 +109,7 @@
   margin: 10px 5px;
   padding: 15px;
   text-transform: capitalize;
+  text-shadow: black 3px 3px;
   font-size: 20px;
   background-color: rgba(32, 32, 32, 0.3);
   border-radius: 15px;
@@ -124,6 +134,7 @@
         width: 50px;
         height: 50px;
         fill: #a9a9a9;
+        filter: drop-shadow(black 3px 3px);
       }
       .weightSVG {
         width: 45px;
@@ -138,6 +149,7 @@
   font-size: 200%;
   margin: 10px 5px;
   padding: 15px;
+  text-shadow: black 3px 3px;
   background-color: rgba(32, 32, 32, 0.3);
   border-radius: 15px;
   text-transform: capitalize;
@@ -157,6 +169,7 @@
   text-transform: capitalize;
   h4 {
     color: white;
+    text-shadow: black 3px 3px;
     font-size: 50px;
   }
 }
