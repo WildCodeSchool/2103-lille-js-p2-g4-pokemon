@@ -1,16 +1,6 @@
 .Evolutions {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   list-style-type: none;
   padding-top: 30px;
-
-  .evolution-arrow {
-    width: 150px;
-    height: auto;
-
-    svg {
-      margin-top: 35px;
-      fill: #a9a9a9;
-    }
-  }
 }
