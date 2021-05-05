@@ -37,7 +37,7 @@
   }
   .pokeName {
     width: 35%;
-    font-size: 30px;
+    font-size: 200%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -71,6 +71,7 @@
     list-style-type: none;
     li {
       display: flex;
+      flex-direction: column;
       align-items: center;
       color: #a9a9a9;
       svg {
