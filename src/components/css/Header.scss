@@ -9,17 +9,19 @@
   position: fixed;
   top: 0;
   left: 0;
-
-  img {
-    width: 40px;
-    margin: 10px;
-    border: white solid 2px;
-    border-radius: 15px;
-    filter: grayscale(1);
-  }
-
-  .divEmpty {
-    width: 130px;
-    margin: 10px;
+  a {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    img {
+      width: 40px;
+      margin: 10px;
+      border: white solid 3px;
+      border-radius: 15px;
+      filter: grayscale(1);
+    }
   }
 }

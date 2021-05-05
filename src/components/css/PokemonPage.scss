@@ -101,9 +101,6 @@
       padding-bottom: 50px;
       padding-top: 50px;
     }
-    h3 {
-      text-transform: capitalize;
-    }
   }
 }
 
@@ -173,5 +170,21 @@
     color: white;
     text-shadow: black 3px 3px;
     font-size: 50px;
+  }
+}
+.typeList {
+  display: flex;
+  .typeItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: white solid 2px;
+    border-radius: 3px;
+    margin: 5px 10px;
+    text-transform: capitalize;
   }
 }

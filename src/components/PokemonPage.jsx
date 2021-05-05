@@ -146,9 +146,18 @@ const PokemonPage = () => {
                 <h2>
                   {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
                 </h2>
-                <h3>
-                  {infos.types.map((element) => element.type.name).join(' - ')}
-                </h3>
+                <ul className="typeList">
+                  {infos.types.map((element) => {
+                    return (
+                      <li
+                        key={`type-${element.type.name}`}
+                        className={`typeItem ${element.type.name}`}
+                      >
+                        {element.type.name}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
             <div
