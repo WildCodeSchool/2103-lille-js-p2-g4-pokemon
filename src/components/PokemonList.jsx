@@ -57,7 +57,7 @@ const PokemonList = ({
             history.push(`/name/${query}`);
           }
         }}
-        placeholder=" Search your Pokemon by name..."
+        placeholder=" Search your Pokemon by name or ID..."
       />
       <select name="list-choice" id="list-choice" onChange={handleOffset}>
         <option value="0">1-99</option>
