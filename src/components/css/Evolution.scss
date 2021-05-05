@@ -11,7 +11,7 @@
     text-decoration: none;
 
     .evolution-image {
-      border: 4px solid #a9a9a9;
+      border: 4px solid white;
       border-radius: 50%;
       width: 150px;
       height: 150px;
@@ -26,6 +26,7 @@
 
   svg {
     fill: #a9a9a9;
+    filter: drop-shadow(black 3px 3px);
     margin: 35px 10px;
   }
 }

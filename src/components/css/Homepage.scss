@@ -2,3 +2,9 @@
   width: 80vw;
   padding-top: 50px;
 }
+
+@media (max-width: 800px) {
+  .Homepage {
+    width: 100vw;
+  }
+}
