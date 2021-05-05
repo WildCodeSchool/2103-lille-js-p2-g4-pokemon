@@ -18,27 +18,40 @@
       height: auto;
     }
 
-    .button-types-refresh {
+    .buttons-container {
       position: absolute;
       top: 20px;
       right: 20px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      margin-left: 20px;
 
-      &:focus {
-        outline: none;
+      button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        margin: 0 5px;
+
+        &:focus {
+          outline: none;
+        }
+
+        svg {
+          width: 42px;
+          height: 42px;
+          fill: #a9a9a9;
+
+          &:hover {
+            fill: #ad2037;
+          }
+        }
       }
 
-      svg {
-        width: 50px;
-        height: 50px;
-        fill: #a9a9a9;
+      .button-filters-refresh {
+        svg {
+          width: 40px;
+          height: 40px;
 
-        &:hover {
-          fill: #ad2037;
-          animation: refresh 0.3s ease-in-out;
+          &:hover {
+            animation: refresh 0.5s ease-in-out;
+          }
         }
       }
     }
@@ -151,6 +164,6 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
