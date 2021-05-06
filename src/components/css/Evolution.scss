@@ -31,9 +31,18 @@
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .evolution-image {
-    width: 100px;
-    height: 100px;
+@media screen and (max-width: 800px) {
+  .Evolution {
+    svg {
+      margin: 10%;
+    }
+  }
+}
+
+@media screen and (max-width: 944px) {
+  .Evolution {
+    svg {
+      margin: 10%;
+    }
   }
 }
