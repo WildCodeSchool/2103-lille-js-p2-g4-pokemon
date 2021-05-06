@@ -117,21 +117,24 @@ const PokemonPage = () => {
         {!isLoading && !error && (
           <>
             <button
-              className="buttonPrevious"
+              className="buttonPrevious animate__animated animate__fadeInLeft"
               type="button"
               onClick={handleEventPrevious}
             >
-              #{infos.id === 1 ? '898' : infos.id - 1}
+              <p>Prev. #{infos.id === 1 ? '898' : infos.id - 1}</p>
             </button>
 
             <button
-              className="buttonNext"
+              className="buttonNext animate__animated animate__fadeInRight"
               type="button"
               onClick={handleEventNext}
             >
-              #{infos.id === 898 ? '1' : infos.id + 1}
+              <p>Next #{infos.id === 898 ? '1' : infos.id + 1}</p>
             </button>
-            <div className="nameNumber">
+            <div
+              className="nameNumber  animate__animated animate__fadeIn 
+"
+            >
               <div className="pokeImg">
                 <img
                   src={infos.sprites.other['official-artwork'].front_default}
@@ -143,12 +146,24 @@ const PokemonPage = () => {
                 <h2>
                   {infos.name.charAt(0).toUpperCase() + infos.name.slice(1)}
                 </h2>
-                <h3>
-                  {infos.types.map((element) => element.type.name).join(' - ')}
-                </h3>
+                <ul className="typeList">
+                  {infos.types.map((element) => {
+                    return (
+                      <li
+                        key={`type-${element.type.name}`}
+                        className={`typeItem ${element.type.name}`}
+                      >
+                        {element.type.name}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
-            <div className="pokeStats">
+            <div
+              className="pokeStats animate__animated animate__fadeIn 
+"
+            >
               <h4>Statistics</h4>
               <ul>
                 <li>
@@ -184,13 +199,19 @@ const PokemonPage = () => {
                 </li>
               </ul>
             </div>
-            <div className="weaknesses">
+            <div
+              className="weaknesses  animate__animated animate__fadeIn 
+"
+            >
               <h4>Weaknesses</h4>
               {infos.types[0].type.url && (
                 <Weaknesses url={infos.types[0].type.url} />
               )}
             </div>
-            <div className="poke-evolutions">
+            <div
+              className="poke-evolutions  animate__animated animate__fadeIn 
+"
+            >
               <h4>Evolutions</h4>
               {infos.species.url && <Evolutions url={infos.species.url} />}
             </div>
