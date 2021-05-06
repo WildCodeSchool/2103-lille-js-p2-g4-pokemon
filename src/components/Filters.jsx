@@ -33,8 +33,8 @@ export default function Filters({
   };
 
   return (
-    <div className="Filters">
-      <div className={`filter-wrapper ${openWrapper && 'open'}`}>
+    <div className={`Filters ${openWrapper ? 'open' : ''}`}>
+      <div className={`filter-wrapper ${openWrapper ? 'open' : ''}`}>
         <div className="buttons-container">
           <button
             type="button"

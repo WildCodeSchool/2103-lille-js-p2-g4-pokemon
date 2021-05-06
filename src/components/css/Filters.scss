@@ -172,10 +172,36 @@
   .Filters {
     padding-top: 10px;
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &.open {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+    }
 
     .filter-wrapper {
+      &.open {
+        height: auto;
+        overflow: scroll;
+      }
+      .types-container {
+        padding-top: 50px;
+      }
+
       .filters-others-container {
         flex-direction: column;
+
+        div {
+          margin: 20px 0;
+          select {
+            width: 80vw;
+          }
+        }
       }
     }
   }
